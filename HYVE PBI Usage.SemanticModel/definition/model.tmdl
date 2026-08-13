@@ -30,6 +30,7 @@ ref table LocalDateTable_5ed9f288-806c-4693-b08a-2b4576d34580
 ref table Key
 ref table Access
 ref table 'RLS Combine New'
+ref table Parameter
 
 ref cultureInfo en-US
 

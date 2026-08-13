@@ -6,7 +6,7 @@
     "y": 118,
     "z": 0,
     "height": 185,
-    "width": 759,
+    "width": 760,
     "tabOrder": 0
   },
   "visual": {
@@ -28,7 +28,7 @@
                       "Hierarchy": "#User Name Hierarchy"
                     }
                   },
-                  "Level": "#User Name"
+                  "Level": "User Name"
                 }
               },
               "queryRef": "Usage Log.#User Name Hierarchy.#User Name",
@@ -93,7 +93,8 @@
                 }
               },
               "queryRef": "Usage Log.#Account/Name Mapping Failed",
-              "nativeQueryRef": "#Account/Name Mapping Failed"
+              "nativeQueryRef": "Account/Name Mapping Failed",
+              "displayName": "Account/Name Mapping Failed"
             }
           ]
         }
@@ -126,6 +127,13 @@
                   }
                 }
               }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
             }
           }
         }
@@ -156,6 +164,19 @@
           },
           "selector": {
             "metadata": "Usage Log.#User Name Hierarchy.user_email"
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "9D"
+                }
+              }
+            }
           }
         }
       ]

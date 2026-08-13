@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
-  "name": "1a2ffc809d8c54c19687",
+  "name": "302257461870132b092f",
   "position": {
-    "x": 3.4501347708894876,
-    "y": 188.89487870619945,
-    "z": 3000,
-    "height": 69.865229110512132,
-    "width": 189.75741239892182,
-    "tabOrder": 3000
+    "x": 3.6234961075725405,
+    "y": 403.1139419674451,
+    "z": 17000,
+    "height": 74.281670205237077,
+    "width": 185.70417551309271,
+    "tabOrder": 17000
   },
   "visual": {
     "visualType": "slicer",
@@ -23,13 +23,12 @@
                       "Entity": "Usage Log"
                     }
                   },
-                  "Property": "#User Name"
+                  "Property": "#Recency Group"
                 }
               },
-              "queryRef": "Usage Log.User Name",
-              "nativeQueryRef": "User Name",
-              "active": true,
-              "displayName": "User Name"
+              "queryRef": "Usage Log.#Recency Group",
+              "nativeQueryRef": "#Recency Group",
+              "active": true
             }
           ]
         }
@@ -49,36 +48,9 @@
           }
         }
       ],
-      "selection": [
-        {
-          "properties": {
-            "singleSelect": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "selectAllCheckboxEnabled": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            }
-          }
-        }
-      ],
       "general": [
         {
           "properties": {
-            "selfFilterEnabled": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
             "outlineColor": {
               "solid": {
                 "color": {
@@ -87,6 +59,60 @@
                       "Value": "'#666666'"
                     }
                   }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "selection": [
+        {
+          "properties": {
+            "selectAllCheckboxEnabled": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "singleSelect": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "header": [
+        {
+          "properties": {
+            "textSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "9D"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "outlineStyle": {
+              "expr": {
+                "Literal": {
+                  "Value": "4D"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Recency Group'"
                 }
               }
             }
@@ -129,28 +155,49 @@
             }
           }
         }
-      ],
-      "header": [
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
         {
           "properties": {
-            "outlineStyle": {
+            "titleWrap": {
               "expr": {
                 "Literal": {
-                  "Value": "4D"
+                  "Value": "true"
                 }
               }
-            },
-            "bold": {
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
               "expr": {
                 "Literal": {
                   "Value": "true"
                 }
               }
             },
-            "textSize": {
+            "transparency": {
               "expr": {
                 "Literal": {
-                  "Value": "9D"
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "width": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
                 }
               }
             }

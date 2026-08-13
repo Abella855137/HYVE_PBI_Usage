@@ -58,8 +58,8 @@ table Access
 		mode: import
 		source = ```
 				DISTINCT(UNION(
-				    SELECTCOLUMNS( FILTER('PBI Spy User Access', 'PBI Spy User Access'[global_employee_id]<>BLANK()),"Work Space", 'PBI Spy User Access'[workspace_name], "Report Name", 'PBI Spy User Access'[report_name], "GID", 'PBI Spy User Access'[global_employee_id]), 
-				    SELECTCOLUMNS( FILTER('RLS Combine New', 'RLS Combine New'[#GID]<>BLANK()), "Work Space", 'RLS Combine New'[Work Space], "Report Name", 'RLS Combine New'[Report Name], "GID", 'RLS Combine New'[#GID])))
+				    SELECTCOLUMNS( FILTER('PBI Spy User Access', 'PBI Spy User Access'[global_employee_id]<>BLANK()),"Work Space", 'PBI Spy User Access'[workspace_name], "Report Name", 'PBI Spy User Access'[#Report Name Revise], "GID", 'PBI Spy User Access'[global_employee_id]), 
+				    SELECTCOLUMNS( FILTER('RLS Combine New', 'RLS Combine New'[#GID]<>BLANK()), "Work Space", 'RLS Combine New'[Work Space], "Report Name", 'RLS Combine New'[#Report Name Revise], "GID", 'RLS Combine New'[#GID])))
 				```
 
 	annotation PBI_Id = 061f4299b9b44a8581151bd34f3526c9

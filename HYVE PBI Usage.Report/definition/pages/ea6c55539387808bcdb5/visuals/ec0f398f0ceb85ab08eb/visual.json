@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
-  "name": "1a2ffc809d8c54c19687",
+  "name": "ec0f398f0ceb85ab08eb",
   "position": {
     "x": 3.4501347708894876,
-    "y": 188.89487870619945,
-    "z": 3000,
-    "height": 69.865229110512132,
-    "width": 189.75741239892182,
-    "tabOrder": 3000
+    "y": 326.03773584905662,
+    "z": 16000,
+    "height": 64.6900269541779,
+    "width": 185.44474393530996,
+    "tabOrder": 16000
   },
   "visual": {
     "visualType": "slicer",
@@ -23,13 +23,13 @@
                       "Entity": "Usage Log"
                     }
                   },
-                  "Property": "#User Name"
+                  "Property": "#Duration Group"
                 }
               },
-              "queryRef": "Usage Log.User Name",
-              "nativeQueryRef": "User Name",
+              "queryRef": "Usage Log.#Duration Group",
+              "nativeQueryRef": "Duration Group",
               "active": true,
-              "displayName": "User Name"
+              "displayName": "Duration Group"
             }
           ]
         }
@@ -49,36 +49,9 @@
           }
         }
       ],
-      "selection": [
-        {
-          "properties": {
-            "singleSelect": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "selectAllCheckboxEnabled": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            }
-          }
-        }
-      ],
       "general": [
         {
           "properties": {
-            "selfFilterEnabled": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
             "outlineColor": {
               "solid": {
                 "color": {
@@ -87,6 +60,33 @@
                       "Value": "'#666666'"
                     }
                   }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "header": [
+        {
+          "properties": {
+            "textSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "9D"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "outlineStyle": {
+              "expr": {
+                "Literal": {
+                  "Value": "4D"
                 }
               }
             }
@@ -130,27 +130,68 @@
           }
         }
       ],
-      "header": [
+      "selection": [
         {
           "properties": {
-            "outlineStyle": {
-              "expr": {
-                "Literal": {
-                  "Value": "4D"
-                }
-              }
-            },
-            "bold": {
+            "selectAllCheckboxEnabled": {
               "expr": {
                 "Literal": {
                   "Value": "true"
                 }
               }
             },
-            "textSize": {
+            "singleSelect": {
               "expr": {
                 "Literal": {
-                  "Value": "9D"
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "titleWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "width": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
                 }
               }
             }

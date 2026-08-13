@@ -1,0 +1,47 @@
+table Parameter
+	lineageTag: 27e27937-dc36-4530-b5c3-13f459f86611
+
+	column Parameter
+		lineageTag: b79a7776-0eb9-466f-9c81-57e8b71ba215
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Parameter Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Parameter Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter Fields'
+		isHidden
+		lineageTag: a966a842-a28d-4fa3-b5fd-3938a1da6bdc
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Parameter Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter Order'
+		isHidden
+		formatString: 0
+		lineageTag: 81908c80-41fb-41bc-9c9a-bd7e302fc081
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Parameter = calculated
+		mode: import
+		source =
+				{
+				    ("~First-Last Operation Month", NAMEOF('Usage Log'[~Duration]), 0)
+				}
+
+	annotation PBI_Id = 7b81877a19284a95b626b7a9db087eeb
+

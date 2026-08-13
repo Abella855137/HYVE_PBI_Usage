@@ -29,7 +29,7 @@ table Glossary
 		mode: import
 		source =
 				let
-				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("hVLLbsIwEPyVVU6tRIX6CVXTniggHpUqxME4S2LJ2FG8IeXvu+uEAAqop0yW2ZmdCZtN8q6srq0i4x1MfG50Mkq+DTbjTJ0YHhmC9rWj8VNAi5ogU4QvGZbWnyJ+TrajTZLi3jgjMrz18Vv6inoA5c4IVQ2ZqW+c9Sq7gpG9NxaH7BkVWAUGCwwmd5hBHXgAvupAweu6UC7nn9bzKQQ8YqUskDlgiHr38qYxDK9wZlGXB+yQGkQHbAmvgaDCGMWXLBi3mQXKZUBeqnqkvfLE/rPzloToFWKvw5QL1Oi0tJ/WHfN8jKQEq8L1Hf/fcHFkAF/eUcHTtWhRPK8XG7fvB6FAUxhdtJbSa0966POmdX2IwyPeRF7durTB+aNYG+tt/1ht/8M6Pq3KYTFZghwcusPlU7OJjJXWGAI0hgpfEyznP93ogZQQ7khd9nqpi3qy3f4B", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"Terms Group" = _t, Terms = _t, #"Terms Description" = _t]),
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("dVJNT8MwDP0rVk8gDW3AgTNicJrYtDEkNHbIUreNlCZV467s3+Ok3UfX9VTLfX5+7zmbTfQmtKy0IGUNzGyqZDSKvhXW41gcuNxzCdJWhsZ3DjVKglgQPsRYaHsI9X20HW2iKSbKKE/DU+9/hS3pVECxUx4q+siprY22Ir4oAzpRGvvoOWVYOi6W6FRqMIbKcQNs2RYZj8tMmJR/rRef4HCPpdBAKkcX+G75nQYzPMKePbv/wA6pRjTAK+HREZQYrNiCCcM0o0CYGMj6qIa4vyzx/vlxyps4MYRc+y6XKNFIn/60apFHMd4laOG6OgiDEN6MQWhSostCf1DWq5RVHpp77Khr9NquRs5P65BE8waaqPrKP7RIYTlbwdo1d1q3V+Elvi2kROegVpTZimC1+GlbA1QecIPqPHeiOrMPX7m6MplbQ5kDR4LvmpQ2b+JNVNnJlywjQ658FrpKvy/8eRKeUSfUoP23mkyeXpiuG7Ay0I6MAE3cnFO5izNy0Nt/", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"Terms Group" = _t, Terms = _t, #"Terms Description" = _t]),
 				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Terms Group", type text}, {"Terms", type text}, {"Terms Description", type text}})
 				in
 				    #"Changed Type"

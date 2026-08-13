@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Note: Green light flagged are PBI development users",
+                    "value": "Note: Green light flagged are PBI DEV team members",
                     "textStyle": {
                       "fontWeight": "bold",
                       "fontStyle": "italic",

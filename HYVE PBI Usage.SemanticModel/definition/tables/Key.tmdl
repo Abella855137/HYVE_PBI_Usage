@@ -1,49 +1,17 @@
 table Key
 	lineageTag: 4dbb1664-1527-4029-a563-825a5f7301ed
 
-	column Key
-		lineageTag: e937cfc4-4d9f-4656-9316-dab8ccd08087
+	column '#Report Name Revise'
+		lineageTag: 5a0292c9-2bb3-4da5-a68c-9cb7c383e608
 		summarizeBy: none
 		isNameInferred
-		sourceColumn: Access[Key]
-
-		annotation SummarizationSetBy = Automatic
-
-	column Count
-		formatString: 0
-		lineageTag: 7f950b03-6fff-4fa0-8554-9a7b9b399b64
-		summarizeBy: sum
-		isNameInferred
-		sourceColumn: [Count]
-
-		annotation SummarizationSetBy = Automatic
-
-	column 'Work Space'
-		lineageTag: 184d62b3-33ce-404c-b33c-86d9e7c1f12d
-		summarizeBy: none
-		isNameInferred
-		sourceColumn: Access[Work Space]
-
-		annotation SummarizationSetBy = Automatic
-
-	column 'Report Name'
-		lineageTag: a5bb6690-f4d5-4322-a8be-6e331e355a72
-		summarizeBy: none
-		isNameInferred
-		sourceColumn: Access[Report Name]
+		sourceColumn: RLS Combine New[#Report Name Revise]
 
 		annotation SummarizationSetBy = Automatic
 
 	partition Key = calculated
 		mode: import
-		source = ```
-				SUMMARIZE(
-				    Access,
-				    Access[Work Space],
-				    Access[Report Name],
-				    Access[Key], 
-				    "Count", COUNT(Access[GID]))
-				```
+		source = SUMMARIZE('RLS Combine New', 'RLS Combine New'[#Report Name Revise])
 
 	annotation PBI_Id = e8cac7623eac476ca9ac8721e89e126f
 

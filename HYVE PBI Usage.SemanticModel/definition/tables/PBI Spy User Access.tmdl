@@ -293,7 +293,7 @@ table 'PBI Spy User Access'
 
 		annotation SummarizationSetBy = Automatic
 
-	column '#Report Name Key' = 'PBI Spy User Access'[workspace_name] &"-"& 'PBI Spy User Access'[report_name]
+	column '#Report Name Key' = 'PBI Spy User Access'[workspace_name] &"-"& 'PBI Spy User Access'[#Report Name Revise]
 		lineageTag: 255d13a5-6e75-4eb5-b0d4-da2a05de9024
 		summarizeBy: none
 
@@ -301,6 +301,12 @@ table 'PBI Spy User Access'
 
 	column #Key1 = 'PBI Spy User Access'[#Report Name Key] &"-"& 'PBI Spy User Access'[global_employee_id]
 		lineageTag: 22968e84-d499-43bb-9d28-e7d025e67e6a
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column '#Report Name Revise' = IF('PBI Spy User Access'[report_name] = "Hyve Global B Report (bigdata-AzureBlob)", "Hyve Global MPL Usage Analysis", 'PBI Spy User Access'[report_name])
+		lineageTag: 129df7fa-1635-4eaf-bbd2-dee5fffa3ee9
 		summarizeBy: none
 
 		annotation SummarizationSetBy = Automatic

@@ -3,10 +3,10 @@
   "name": "7cbf0d196cdf63bce36b",
   "position": {
     "x": 0,
-    "y": 346,
+    "y": 346.26139817629183,
     "z": 7000,
-    "height": 339,
-    "width": 191,
+    "height": 175.07598784194531,
+    "width": 190.63829787234044,
     "tabOrder": 7000
   },
   "visual": {
@@ -20,94 +20,20 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Access"
+                      "Entity": "Key"
                     }
                   },
-                  "Property": "Work Space"
+                  "Property": "#Report Name Revise"
                 }
               },
-              "queryRef": "Access.Work Space",
-              "nativeQueryRef": "Work Space",
-              "active": true
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Access"
-                    }
-                  },
-                  "Property": "Report Name"
-                }
-              },
-              "queryRef": "Access.Report Name",
-              "nativeQueryRef": "Report Name",
+              "queryRef": "Key.#Report Name Revise",
+              "nativeQueryRef": "#Report Name Revise",
               "active": true
             }
           ]
         }
       }
     },
-    "expansionStates": [
-      {
-        "roles": [
-          "Values"
-        ],
-        "levels": [
-          {
-            "queryRefs": [
-              "Access.Work Space"
-            ],
-            "isCollapsed": true,
-            "identityKeys": [
-              {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Access"
-                    }
-                  },
-                  "Property": "Work Space"
-                }
-              }
-            ],
-            "isPinned": true
-          },
-          {
-            "queryRefs": [
-              "Access.Report Name"
-            ],
-            "isCollapsed": true,
-            "isPinned": true
-          }
-        ],
-        "root": {
-          "children": [
-            {
-              "identityValues": [
-                {
-                  "Literal": {
-                    "Value": "'Hyve Accounting'"
-                  }
-                }
-              ],
-              "isToggled": true
-            },
-            {
-              "identityValues": [
-                {
-                  "Literal": {
-                    "Value": "'Hyve Corp'"
-                  }
-                }
-              ],
-              "isToggled": true
-            }
-          ]
-        }
-      }
-    ],
     "objects": {
       "data": [
         {
@@ -171,8 +97,8 @@
                 "Version": 2,
                 "From": [
                   {
-                    "Name": "a",
-                    "Entity": "Access",
+                    "Name": "k",
+                    "Entity": "Key",
                     "Type": 0
                   }
                 ],
@@ -185,20 +111,10 @@
                             "Column": {
                               "Expression": {
                                 "SourceRef": {
-                                  "Source": "a"
+                                  "Source": "k"
                                 }
                               },
-                              "Property": "Work Space"
-                            }
-                          },
-                          {
-                            "Column": {
-                              "Expression": {
-                                "SourceRef": {
-                                  "Source": "a"
-                                }
-                              },
-                              "Property": "Report Name"
+                              "Property": "#Report Name Revise"
                             }
                           }
                         ],
@@ -206,97 +122,10 @@
                           [
                             {
                               "Literal": {
-                                "Value": "'Hyve Corp'"
-                              }
-                            },
-                            {
-                              "Literal": {
-                                "Value": "'Hyve Global B Report (bigdata-AzureBlob)'"
+                                "Value": "'Hyve Global MPL Usage Analysis'"
                               }
                             }
                           ]
-                        ]
-                      }
-                    },
-                    "Annotations": {
-                      "filterExpressionMetadata": {
-                        "expressions": [
-                          {
-                            "Column": {
-                              "Expression": {
-                                "SourceRef": {
-                                  "Entity": "Access"
-                                }
-                              },
-                              "Property": "Work Space"
-                            }
-                          },
-                          {
-                            "Column": {
-                              "Expression": {
-                                "SourceRef": {
-                                  "Entity": "Access"
-                                }
-                              },
-                              "Property": "Report Name"
-                            }
-                          }
-                        ],
-                        "decomposedIdentities": {
-                          "values": [
-                            [
-                              {
-                                "0": [
-                                  {
-                                    "Literal": {
-                                      "Value": "'Hyve Corp'"
-                                    }
-                                  }
-                                ]
-                              },
-                              {
-                                "1": [
-                                  {
-                                    "Literal": {
-                                      "Value": "'Hyve Global B Report (bigdata-AzureBlob)'"
-                                    }
-                                  }
-                                ]
-                              }
-                            ]
-                          ],
-                          "columns": [
-                            {
-                              "value": {
-                                "Column": {
-                                  "Expression": {
-                                    "SourceRef": {
-                                      "Entity": "Access"
-                                    }
-                                  },
-                                  "Property": "Work Space"
-                                }
-                              }
-                            },
-                            {
-                              "value": {
-                                "Column": {
-                                  "Expression": {
-                                    "SourceRef": {
-                                      "Entity": "Access"
-                                    }
-                                  },
-                                  "Property": "Report Name"
-                                }
-                              }
-                            }
-                          ]
-                        },
-                        "valueMap": [
-                          {
-                            "0": "Hyve Corp",
-                            "1": "Hyve Global B Report (bigdata-AzureBlob)"
-                          }
                         ]
                       }
                     }
@@ -372,15 +201,15 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "c99b58795bf005043aec",
+        "name": "419c7f8bc60e497af309",
         "field": {
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "Access"
+                "Entity": "Key"
               }
             },
-            "Property": "Report Name"
+            "Property": "#Report Name Revise"
           }
         },
         "type": "Categorical",
@@ -388,8 +217,8 @@
           "Version": 2,
           "From": [
             {
-              "Name": "a",
-              "Entity": "Access",
+              "Name": "k",
+              "Entity": "Key",
               "Type": 0
             }
           ],
@@ -404,10 +233,10 @@
                           "Column": {
                             "Expression": {
                               "SourceRef": {
-                                "Source": "a"
+                                "Source": "k"
                               }
                             },
-                            "Property": "Report Name"
+                            "Property": "#Report Name Revise"
                           }
                         }
                       ],
