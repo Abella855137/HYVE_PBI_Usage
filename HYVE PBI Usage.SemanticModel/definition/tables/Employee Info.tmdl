@@ -1,0 +1,177 @@
+table 'Employee Info'
+	lineageTag: c8d2b98e-21f0-4b2b-8adb-0c4a971eed93
+
+	column 'Employee Global ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: 2e6a4c2b-c33a-49be-8401-a366dd6cf25a
+		summarizeBy: count
+		sourceColumn: Employee Global ID
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Name
+		dataType: string
+		lineageTag: 0935571c-afdc-48bc-97cd-4097c0c697b0
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Email
+		dataType: string
+		lineageTag: c88e1216-23ea-4395-9088-bae6116cb99d
+		summarizeBy: none
+		sourceColumn: Email
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Lower Case Email'
+		dataType: string
+		lineageTag: 9bbd591e-e324-4f5e-81e2-b86d5d88ea73
+		summarizeBy: none
+		sourceColumn: Lower Case Email
+
+		annotation SummarizationSetBy = Automatic
+
+	column userPrincipalName
+		dataType: string
+		lineageTag: 11bf2b42-99cc-4caf-9122-302c428a788f
+		summarizeBy: none
+		sourceColumn: userPrincipalName
+
+		annotation SummarizationSetBy = Automatic
+
+	column tdsnx_upn
+		dataType: string
+		lineageTag: 7545dc75-f99a-42dc-b154-0b5b0a13888d
+		summarizeBy: none
+		sourceColumn: tdsnx_upn
+
+		annotation SummarizationSetBy = Automatic
+
+	column ltd_upn
+		dataType: string
+		lineageTag: e0ef5f85-d905-4317-be99-743a7b5f1395
+		summarizeBy: none
+		sourceColumn: ltd_upn
+
+		annotation SummarizationSetBy = Automatic
+
+	column ltd_email
+		dataType: string
+		lineageTag: fcc34bb3-c36c-4eb0-8f01-2adf8d0b906e
+		summarizeBy: none
+		sourceColumn: ltd_email
+
+		annotation SummarizationSetBy = Automatic
+
+	column Dept
+		dataType: string
+		lineageTag: fa3d40da-5652-40c0-875e-5c6535f3093f
+		summarizeBy: none
+		sourceColumn: Dept
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Workday ID'
+		dataType: string
+		lineageTag: 46ea7c01-59ec-4322-940a-62c898dee0d5
+		summarizeBy: none
+		sourceColumn: Workday ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Company
+		dataType: string
+		lineageTag: 3cb8257e-0222-4244-af10-3bff0644a9b4
+		summarizeBy: none
+		sourceColumn: Company
+
+		annotation SummarizationSetBy = Automatic
+
+	column Location
+		dataType: string
+		lineageTag: 8ec5d4eb-2293-4284-aada-e3971447d765
+		summarizeBy: none
+		sourceColumn: Location
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Job Title'
+		dataType: string
+		lineageTag: ffbf58e4-317f-404c-a910-77af0d12ab90
+		summarizeBy: none
+		sourceColumn: Job Title
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Job Code'
+		dataType: string
+		lineageTag: 3ca08b4d-e0cd-41a6-b284-91c00f832512
+		summarizeBy: none
+		sourceColumn: Job Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column Manager
+		dataType: string
+		lineageTag: 1adc3be4-a96b-4ba3-ac4a-172f1ced6698
+		summarizeBy: none
+		sourceColumn: Manager
+
+		annotation SummarizationSetBy = Automatic
+
+	column Refresh_Date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 4670c327-08fc-4f43-95f8-85a278b3bbd3
+		summarizeBy: none
+		sourceColumn: Refresh_Date
+
+		variation Variation
+			isDefault
+			relationship: 15f84020-aea8-470e-b7dd-6d3e376ba8f4
+			defaultHierarchy: LocalDateTable_3706876b-e72d-49a7-ac8b-39b8e2c775ce.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column '#Duplicate User' = ```
+			
+			IF(
+			    CALCULATE(
+			        COUNTROWS('Employee Info'),
+			        ALLEXCEPT('Employee Info', 'Employee Info'[Name])  // 按客户ID分组
+			    ) > 1,
+			    "Dup",
+			    "Norm"
+			)
+			
+			```
+		lineageTag: 37ae05e7-809a-4cc2-b360-99ca2f37087c
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Employee Info' = m
+		mode: import
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"4529f1ba-46ff-4c8b-9e0b-600287b1340b" = Workspaces{[workspaceId="4529f1ba-46ff-4c8b-9e0b-600287b1340b"]}[Data],
+				    #"0e7a08b2-fa24-4fc4-be60-86f57d5fcaf6" = #"4529f1ba-46ff-4c8b-9e0b-600287b1340b"{[dataflowId="0e7a08b2-fa24-4fc4-be60-86f57d5fcaf6"]}[Data],
+				    #"Employee Info_" = #"0e7a08b2-fa24-4fc4-be60-86f57d5fcaf6"{[entity="Employee Info",version=""]}[Data],
+				    #"Trimmed Text" = Table.TransformColumns(#"Employee Info_",{{"Employee Global ID", Text.Trim, type text}, {"Lower Case Email", Text.Trim, type text}}),
+				    #"Sorted Rows" = Table.Sort(#"Trimmed Text",{{"Company", Order.Descending}}),
+				    #"Filtered Rows" = Table.SelectRows(#"Sorted Rows", each not Text.Contains([Company], "Temp Worker")),
+				    #"Removed Columns" = Table.RemoveColumns(#"Filtered Rows",{"Phone", "Mobile", "Service Year"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

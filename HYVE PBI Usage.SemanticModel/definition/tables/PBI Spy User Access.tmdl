@@ -1,0 +1,312 @@
+table 'PBI Spy User Access'
+	lineageTag: 801fe44b-b17b-4885-8627-fdc29a7abfa0
+
+	measure '~Flag SPY Users' = CALCULATE(DISTINCTCOUNT('PBI Spy User Access'[user_name]),'PBI Spy User Access'[~Has RLS] = "N")
+		formatString: 0
+		lineageTag: 24c26bf5-8a22-4870-9135-02ac8012c244
+
+	measure '~Flag SPY Users Ratio' = DIVIDE([~Flag SPY Users], COUNT('PBI Spy User Access'[user_name]))
+		lineageTag: de98fecd-3ed7-41cf-99ca-8835e8e934b6
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column oid
+		dataType: string
+		lineageTag: 20a9da81-e465-4005-9c57-1b05c28d99c7
+		summarizeBy: none
+		sourceColumn: oid
+
+		annotation SummarizationSetBy = Automatic
+
+	column report_type
+		dataType: string
+		lineageTag: 3a9ab782-3149-420d-a519-5cc5430654b8
+		summarizeBy: none
+		sourceColumn: report_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column workspace_name
+		dataType: string
+		lineageTag: 76c131e0-6914-4ac5-bf5b-08d0a88beeb5
+		summarizeBy: none
+		sourceColumn: workspace_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column report_name
+		dataType: string
+		lineageTag: f9516385-1351-4073-8357-204762ae37b4
+		summarizeBy: none
+		sourceColumn: report_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column menu_title
+		dataType: string
+		lineageTag: e11869b3-af43-4d1b-843d-1c11cfa243d4
+		summarizeBy: none
+		sourceColumn: menu_title
+
+		annotation SummarizationSetBy = Automatic
+
+	column embedded_spy_resource
+		dataType: string
+		lineageTag: 0ebfc629-ef5e-4196-8d8a-02699b220658
+		summarizeBy: none
+		sourceColumn: embedded_spy_resource
+
+		annotation SummarizationSetBy = Automatic
+
+	column embedded_spy_role
+		dataType: string
+		lineageTag: 67c86b1f-57dc-46bb-a3a5-af51b7323eee
+		summarizeBy: none
+		sourceColumn: embedded_spy_role
+
+		annotation SummarizationSetBy = Automatic
+
+	column rls_role
+		dataType: string
+		lineageTag: 6c7f43ae-d11e-430a-88b2-b1543222e7fa
+		summarizeBy: none
+		sourceColumn: rls_role
+
+		annotation SummarizationSetBy = Automatic
+
+	column resource_comment
+		dataType: string
+		lineageTag: bb6bf833-db88-4b95-8de8-06b32e634855
+		summarizeBy: none
+		sourceColumn: resource_comment
+
+		annotation SummarizationSetBy = Automatic
+
+	column company_name
+		dataType: string
+		lineageTag: d8ada328-ed83-4ef6-a3e2-fea91e7056f2
+		summarizeBy: none
+		sourceColumn: company_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column email_address
+		dataType: string
+		lineageTag: 960cb6d2-d703-489d-bc2b-59dcd043ee3e
+		summarizeBy: none
+		sourceColumn: email_address
+
+		annotation SummarizationSetBy = Automatic
+
+	column global_employee_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 83fab145-e644-4653-8fa0-94daeb0b491f
+		summarizeBy: sum
+		sourceColumn: global_employee_id
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column cost_center_id
+		dataType: string
+		lineageTag: 18fc9d29-1272-4c41-8e21-cd62a27d7ec5
+		summarizeBy: none
+		sourceColumn: cost_center_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column job_code_id
+		dataType: string
+		lineageTag: d1c59101-b317-4710-817f-e06664488abb
+		summarizeBy: none
+		sourceColumn: job_code_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column working_title
+		dataType: string
+		lineageTag: 59cd3b91-bbcd-4bbc-bb94-38d362476214
+		summarizeBy: none
+		sourceColumn: working_title
+
+		annotation SummarizationSetBy = Automatic
+
+	column user_name
+		dataType: string
+		lineageTag: 785dd68e-0519-4eed-bfe1-ef5c24a1955d
+		summarizeBy: none
+		sourceColumn: user_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column local_company
+		dataType: string
+		lineageTag: 955d9ce6-f4a0-496b-884a-e53e10b79df1
+		summarizeBy: none
+		sourceColumn: local_company
+
+		annotation SummarizationSetBy = Automatic
+
+	column local_company_name
+		dataType: string
+		lineageTag: 80e4ef59-61e6-4eab-a1f3-4b2783a1cea8
+		summarizeBy: none
+		sourceColumn: local_company_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column loginid
+		dataType: string
+		lineageTag: 9af6b0b3-6504-4333-a60a-90f06a9d125f
+		summarizeBy: none
+		sourceColumn: loginid
+
+		annotation SummarizationSetBy = Automatic
+
+	column user_id
+		dataType: string
+		lineageTag: d54e16ca-6bee-4cac-8435-9aeece6e8b8e
+		summarizeBy: none
+		sourceColumn: user_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column spy_role_level
+		dataType: int64
+		formatString: 0
+		lineageTag: c0af5664-5a18-4a4b-b487-b0f4bf730571
+		summarizeBy: sum
+		sourceColumn: spy_role_level
+
+		annotation SummarizationSetBy = Automatic
+
+	column parent_resource
+		dataType: string
+		lineageTag: fba7d4e0-8363-408b-b441-eb4461ca0a86
+		summarizeBy: none
+		sourceColumn: parent_resource
+
+		annotation SummarizationSetBy = Automatic
+
+	column platform
+		dataType: string
+		lineageTag: 6391c479-1f79-49f9-856c-6ffbd3e5cb45
+		summarizeBy: none
+		sourceColumn: platform
+
+		annotation SummarizationSetBy = Automatic
+
+	column expired_datetime
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 2fb7c5ce-a1ac-4ff9-ad68-30d689cf21be
+		summarizeBy: none
+		sourceColumn: expired_datetime
+
+		variation Variation
+			isDefault
+			relationship: 6c3dfc87-e06f-40bc-8174-97947dd6be28
+			defaultHierarchy: LocalDateTable_834a6f4d-264f-42b4-b236-306d3032b862.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column url
+		dataType: string
+		lineageTag: c922c6f1-ebf4-4b6d-aec1-7d9bbf7a3049
+		summarizeBy: none
+		sourceColumn: url
+
+		annotation SummarizationSetBy = Automatic
+
+	column push_flag
+		dataType: string
+		lineageTag: c625df8d-21c3-466d-a625-7ee66b542372
+		summarizeBy: none
+		sourceColumn: push_flag
+
+		annotation SummarizationSetBy = Automatic
+
+	column entry_datetime
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 8a54f54f-3730-4096-9cb9-366f64f9a3da
+		summarizeBy: none
+		sourceColumn: entry_datetime
+
+		variation Variation
+			isDefault
+			relationship: db9ef3a6-1349-4893-8ba4-6b24405a8b83
+			defaultHierarchy: LocalDateTable_317da7e3-f826-427d-9d44-8cfd1e926860.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column update_datetime
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 82cf7f1c-df2a-48a5-82e4-faaea40b6675
+		summarizeBy: none
+		sourceColumn: update_datetime
+
+		variation Variation
+			isDefault
+			relationship: b71bb615-265b-4f47-aa9f-0b5596377d11
+			defaultHierarchy: LocalDateTable_0246d634-8df5-4b72-b9a8-daa1fa70417f.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column delete_datetime
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: ced8b1f9-a4a8-4753-81d9-dc308d0cc53c
+		summarizeBy: none
+		sourceColumn: delete_datetime
+
+		variation Variation
+			isDefault
+			relationship: 8795b761-a13e-4617-8b39-64311ba5d104
+			defaultHierarchy: LocalDateTable_f30ebdc9-9d49-41b4-989c-a37da2d36df7.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column '~Has RLS' = ```
+			
+			IF(
+			    CONTAINS(
+			        'RLS Combine',
+			        'RLS Combine'[#User Name Additional],
+			        'PBI Spy User Access'[user_name]
+			    ),
+			    "Y", 
+			    "N"
+			)
+			```
+		lineageTag: 49331d47-6684-47ff-8fe8-c35a39034787
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'SPY UPN' = LOOKUPVALUE('Employee Info'[userPrincipalName], 'Employee Info'[Employee Global ID], 'PBI Spy User Access'[global_employee_id])
+		lineageTag: 4646dc38-bdf7-4934-9d0f-95a894b005ea
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'PBI Spy User Access' = m
+		mode: import
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"4529f1ba-46ff-4c8b-9e0b-600287b1340b" = Workspaces{[workspaceId="4529f1ba-46ff-4c8b-9e0b-600287b1340b"]}[Data],
+				    #"0e7a08b2-fa24-4fc4-be60-86f57d5fcaf6" = #"4529f1ba-46ff-4c8b-9e0b-600287b1340b"{[dataflowId="0e7a08b2-fa24-4fc4-be60-86f57d5fcaf6"]}[Data],
+				    #"PBI Spy User Access_" = #"0e7a08b2-fa24-4fc4-be60-86f57d5fcaf6"{[entity="PBI Spy User Access",version=""]}[Data],
+				    #"Filtered Rows" = Table.SelectRows(#"PBI Spy User Access_", each ([workspace_name] = "Hyve Corp") and ([menu_title] = "Hyve Global MPL Report"))
+				in
+				    #"Filtered Rows"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,81 @@
+table Date
+	lineageTag: b4aeb273-8c8e-4427-afae-04df8c832fcb
+
+	measure 'Refresh Date' = TODAY()
+		formatString: Short Date
+		lineageTag: 8a9dd7ed-9ad4-46b2-b810-3825936965de
+
+	column Date
+		formatString: General Date
+		lineageTag: 89f3a9aa-694d-4234-b75f-12920f134434
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		variation Variation
+			isDefault
+			relationship: 76de12de-37fd-4cd7-8013-e31a93fd0052
+			defaultHierarchy: LocalDateTable_5ed9f288-806c-4693-b08a-2b4576d34580.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_CY = MONTH([Date])
+		formatString: 0
+		lineageTag: d0d01625-ad18-42c4-9c22-df6ab0d71dfa
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column FY_Q =
+			
+			IF([month_CY]=12 ||[month_CY]=1|| [month_CY]=2,"Q1",
+			IF([month_CY]=3 ||[month_CY]=4|| [month_CY]=5,"Q2",
+			IF([month_CY]=6 ||[month_CY]=7|| [month_CY]=8,"Q3","Q4")))
+		lineageTag: 99bc73f3-8c35-4f0c-8ec8-a7893ff20dff
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column FY_Year =
+			
+			IF(MONTH([Date])=12,YEAR([Date])+1,YEAR([Date]))
+		formatString: 0
+		lineageTag: ce9c4504-95bf-4acb-ba33-d80236f30391
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearMonth = FORMAT('Date'[Date].[Date], "yyyy-MMM")
+		lineageTag: b95b6386-7d9b-41de-a033-790bbb97e88a
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearQuarter = 'Date'[FY_Year] & 'Date'[FY_Q]
+		lineageTag: 08841b1d-ca40-4ec8-a43d-822cce3b87f6
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	hierarchy 'YearQuarter Hierarchy'
+		lineageTag: 970912fb-32d1-4ebf-9afb-c5ac18920794
+
+		level YearQuarter
+			lineageTag: 8d236a53-6d82-411b-8fda-ad969ab77d29
+			column: YearQuarter
+
+		level YearMonth
+			lineageTag: 20451387-a36c-40fe-a424-ea7233e08fef
+			column: YearMonth
+
+	partition Date = calculated
+		mode: import
+		source =
+				
+				VAR MinDate = MINX(ALL('Usage Log'), 'Usage Log'[#Date])
+				VAR MaxDate = MAXX(ALL('Usage Log'), 'Usage Log'[#Date])
+				RETURN
+				    CALENDAR(MinDate, MaxDate)
+
+	annotation PBI_Id = 466dbc35fea6454b9bbaef6954e54ec9
+

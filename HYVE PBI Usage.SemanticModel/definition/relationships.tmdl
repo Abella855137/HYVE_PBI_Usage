@@ -1,0 +1,69 @@
+relationship e1382a2b-35db-481e-a9ca-f2f165399ee3
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Usage Log'.create_datetime
+	toColumn: LocalDateTable_98db0f42-0105-4780-83b0-ff24c5e364e2.Date
+
+relationship 737f0bc7-6ebf-46eb-8f75-17e9d4bcb125
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Usage Log'.entry_datetime
+	toColumn: LocalDateTable_639c815b-939e-4ee0-9767-1f71fa0fa918.Date
+
+relationship 27290b4c-d93e-4791-8c45-0e4b3f90c4ae
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Usage Log'.update_datetime
+	toColumn: LocalDateTable_8f6264c6-baa2-4f50-b183-5e481f1299f8.Date
+
+relationship 15f84020-aea8-470e-b7dd-6d3e376ba8f4
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Employee Info'.Refresh_Date
+	toColumn: LocalDateTable_3706876b-e72d-49a7-ac8b-39b8e2c775ce.Date
+
+relationship 6c3dfc87-e06f-40bc-8174-97947dd6be28
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'PBI Spy User Access'.expired_datetime
+	toColumn: LocalDateTable_834a6f4d-264f-42b4-b236-306d3032b862.Date
+
+relationship db9ef3a6-1349-4893-8ba4-6b24405a8b83
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'PBI Spy User Access'.entry_datetime
+	toColumn: LocalDateTable_317da7e3-f826-427d-9d44-8cfd1e926860.Date
+
+relationship b71bb615-265b-4f47-aa9f-0b5596377d11
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'PBI Spy User Access'.update_datetime
+	toColumn: LocalDateTable_0246d634-8df5-4b72-b9a8-daa1fa70417f.Date
+
+relationship 8795b761-a13e-4617-8b39-64311ba5d104
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'PBI Spy User Access'.delete_datetime
+	toColumn: LocalDateTable_f30ebdc9-9d49-41b4-989c-a37da2d36df7.Date
+
+relationship a00124f4-fee9-46ca-92cd-c67ece4e950c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'RLS Data'.'Entry Datetime'
+	toColumn: LocalDateTable_a4009110-576d-4a31-bcba-6881339c4111.Date
+
+relationship 90c06b2e-4ca4-4b75-a4af-a2bc02f7e55b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'RLS Data'.'Update Datetime'
+	toColumn: LocalDateTable_2dc84de9-363d-47ed-abc3-6e1b67b23ec0.Date
+
+relationship 76de12de-37fd-4cd7-8013-e31a93fd0052
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Date.Date
+	toColumn: LocalDateTable_5ed9f288-806c-4693-b08a-2b4576d34580.Date
+
+relationship 0561267d-d527-958d-940a-e36088d9456b
+	fromColumn: 'Usage Log'.#Date
+	toColumn: Date.Date
+
+relationship c52257d2-be56-2e83-dccb-d49ba7e41677
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'User Access'.UPN
+	toColumn: 'PBI Spy User Access'.email_address
+
+relationship 76c1a060-67d9-b11c-72ef-ff1caad47760
+	fromColumn: 'RLS Combine'.UPN
+	toColumn: 'User Access'.UPN
+

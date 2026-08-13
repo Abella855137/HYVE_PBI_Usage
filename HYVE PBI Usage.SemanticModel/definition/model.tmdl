@@ -1,0 +1,39 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["Usage Log","Employee Info","PBI Spy User Access","RLS Data","Glossary","RLS Combine"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table 'Usage Log'
+ref table DateTableTemplate_408c546c-792b-469d-b95e-28a17708128f
+ref table LocalDateTable_98db0f42-0105-4780-83b0-ff24c5e364e2
+ref table LocalDateTable_639c815b-939e-4ee0-9767-1f71fa0fa918
+ref table LocalDateTable_8f6264c6-baa2-4f50-b183-5e481f1299f8
+ref table 'Employee Info'
+ref table LocalDateTable_3706876b-e72d-49a7-ac8b-39b8e2c775ce
+ref table 'PBI Spy User Access'
+ref table LocalDateTable_834a6f4d-264f-42b4-b236-306d3032b862
+ref table LocalDateTable_317da7e3-f826-427d-9d44-8cfd1e926860
+ref table LocalDateTable_0246d634-8df5-4b72-b9a8-daa1fa70417f
+ref table LocalDateTable_f30ebdc9-9d49-41b4-989c-a37da2d36df7
+ref table Date
+ref table 'RLS Data'
+ref table LocalDateTable_a4009110-576d-4a31-bcba-6881339c4111
+ref table LocalDateTable_2dc84de9-363d-47ed-abc3-6e1b67b23ec0
+ref table Glossary
+ref table 'User Access'
+ref table RecencyRange
+ref table LocalDateTable_5ed9f288-806c-4693-b08a-2b4576d34580
+ref table 'RLS Combine'
+ref table 'RLS Only'
+
+ref cultureInfo en-US
+

@@ -1,0 +1,89 @@
+table 'User Access'
+	lineageTag: 4babbd17-8118-48f4-89a6-a7d86ae6c2f6
+
+	measure '~Total User' = DISTINCTCOUNT('User Access'[UPN])
+		formatString: 0
+		lineageTag: b86a9e9c-8df0-4c93-8b12-eac436b8b468
+
+	measure '~SPY & RLS' =
+			
+			VAR _SPY = CALCULATE(COUNTROWS('PBI Spy User Access'), 'PBI Spy User Access'[~Has RLS] = "Y")
+			VAR _RLS = CALCULATE(COUNTROWS(ALLEXCEPT('RLS Combine','RLS Combine'[Report Name])), 'RLS Combine'[#Has SPY] = "Y")
+			VAR _Result = _RLS + _SPY
+			RETURN _Result
+		formatString: 0
+		lineageTag: 944f157f-c7d8-4103-923b-605aba989eb0
+
+	column UPN
+		lineageTag: 5eab627f-4bf3-478b-b7e2-bc9edbeb19fa
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [UPN]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'User Name' = ```
+			
+			VAR CIS_GID = LOOKUPVALUE('Employee Info'[Name],'Employee Info'[Employee Global ID],'User Access'[#GID]) 
+			VAR C_NOW = LOOKUPVALUE('Employee Info'[Name],'Employee Info'[userPrincipalName], 'User Access'[UPN])
+			VAR C_TD = LOOKUPVALUE('Employee Info'[Name],'Employee Info'[tdsnx_upn], 'User Access'[UPN])
+			VAR C_LTD = LOOKUPVALUE('Employee Info'[Name],'Employee Info'[ltd_upn], 'User Access'[UPN])
+			VAR RESULT =
+			SWITCH(
+			    TRUE(),
+			    CIS_GID <> BLANK(), CIS_GID,
+			    C_NOW <> BLANK(), C_NOW,
+			    C_TD  <> BLANK(), C_TD,
+			    C_LTD <> BLANK(), C_LTD,
+			    "Others"
+			)
+			RETURN RESULT
+			```
+		lineageTag: 6ebf5ee3-60aa-4dca-8b7a-1ae66d6f97a3
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column #GID =
+			
+			VAR _RLSGID = LOOKUPVALUE('RLS Only'[#GID], 'RLS Only'[UPN], 'User Access'[UPN])
+			VAR _SPYGID = LOOKUPVALUE('PBI Spy User Access'[global_employee_id], 'PBI Spy User Access'[SPY UPN], 'User Access'[UPN])
+			VAR _Result = IF(_SPYGID <> BLANK(), _SPYGID, _RLSGID)
+			RETURN _Result
+		formatString: 0
+		lineageTag: 0c290a73-fd21-4766-8202-4b3f7272e279
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column #Validate =
+			
+			VAR SPY_Access_UPN = IF(LOOKUPVALUE('PBI Spy User Access'[SPY UPN],'PBI Spy User Access'[SPY UPN], 'User Access'[UPN]) <> BLANK(), TRUE(), FALSE())
+			VAR SPY_Access_GID = IF(LOOKUPVALUE('PBI Spy User Access'[global_employee_id],'PBI Spy User Access'[global_employee_id], 'User Access'[#GID]) <> BLANK(), TRUE(), FALSE())
+			VAR SPY_Access = SPY_Access_GID || SPY_Access_UPN
+			VAR RLS_Access_UPN = IF(LOOKUPVALUE('RLS Only'[UPN], 'RLS Only'[UPN], 'User Access'[UPN]) <> BLANK(), TRUE(), FALSE())
+			VAR RLS_Access_GID = IF('User Access'[#GID]<>BLANK(), IF(LOOKUPVALUE('RLS Only'[#GID], 'RLS Only'[#GID], 'User Access'[#GID]) <> BLANK(), TRUE(), FALSE()))
+			VAR RLS_Access = RLS_Access_GID || RLS_Access_UPN
+			VAR Result = SWITCH(
+			    TRUE(),
+			    SPY_Access && RLS_Access, "1. SPY & RLS",
+			    SPY_Access, "2. SPY Access Only",
+			    RLS_Access, "3. RLS Access Only",
+			    "4. None")
+			RETURN Result
+		lineageTag: 65659e88-6f8a-43be-bb22-164e2ff99ec0
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'User Access' = calculated
+		mode: import
+		source = ```
+				
+				DISTINCT(UNION(
+				    SELECTCOLUMNS( 'PBI Spy User Access', "UPN", 'PBI Spy User Access'[SPY UPN]), 
+				    SELECTCOLUMNS( 'RLS Combine', "UPN", 'RLS Combine'[UPN])))
+				```
+
+	annotation PBI_Id = d5fc949635d9434592021e32eeffc635
+

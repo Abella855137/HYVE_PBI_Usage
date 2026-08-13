@@ -1,0 +1,26 @@
+table RecencyRange
+	lineageTag: 84d053af-8c15-4ffb-89bc-ce3fa17329d3
+
+	measure 'RecencyRange Value' = SELECTEDVALUE('RecencyRange'[RecencyRange], 10)
+		formatString: 0
+		lineageTag: 0abc42a2-3d30-4b41-a642-e56cda709616
+
+	column RecencyRange
+		formatString: 0
+		lineageTag: 0b264275-7e2d-4a77-80bc-8d01f62474e8
+		summarizeBy: none
+		sourceColumn: [Value]
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 0
+				}
+
+		annotation SummarizationSetBy = User
+
+	partition RecencyRange = calculated
+		mode: import
+		source = GENERATESERIES(1, 1500, 1)
+
+	annotation PBI_Id = 009da5bd049048debdba7351ba79a7ea
+

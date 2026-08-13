@@ -1,0 +1,149 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 526,
+        "y": 241
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 265,
+            "y": 587
+          },
+          "nodeIndex": "Employee Info",
+          "nodeLineageTag": "c8d2b98e-21f0-4b2b-8adb-0c4a971eed93",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 9
+        },
+        {
+          "location": {
+            "x": 526,
+            "y": 328
+          },
+          "nodeIndex": "PBI Spy User Access",
+          "nodeLineageTag": "801fe44b-b17b-4885-8627-fdc29a7abfa0",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 0
+          },
+          "nodeIndex": "Usage Log",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 192,
+            "y": 367
+          },
+          "nodeIndex": "Date",
+          "nodeLineageTag": "b4aeb273-8c8e-4427-afae-04df8c832fcb",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 852,
+            "y": 133.5
+          },
+          "nodeIndex": "RLS Data",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 1704,
+            "y": 207.5
+          },
+          "nodeIndex": "Glossary",
+          "nodeLineageTag": "8c906f2f-e669-4509-b615-d852f0e5e483",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 7
+        },
+        {
+          "location": {
+            "x": 826,
+            "y": 604
+          },
+          "nodeIndex": "User Access",
+          "nodeLineageTag": "4babbd17-8118-48f4-89a6-a7d86ae6c2f6",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 8
+        },
+        {
+          "location": {
+            "x": 2272,
+            "y": 225.5
+          },
+          "nodeIndex": "RecencyRange",
+          "nodeLineageTag": "84d053af-8c15-4ffb-89bc-ce3fa17329d3",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 1212,
+            "y": 582
+          },
+          "nodeIndex": "RLS Combine",
+          "nodeLineageTag": "16b39105-6aca-44d5-aa55-91d872d1d829",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 2556,
+            "y": 343.5
+          },
+          "nodeIndex": "RLS Only",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

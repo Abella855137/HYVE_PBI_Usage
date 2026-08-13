@@ -1,0 +1,83 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "690193f08e4d40ed5a21",
+  "position": {
+    "x": 1054.8335974643423,
+    "y": 57.812995245641837,
+    "z": 11000,
+    "height": 75.0554675118859,
+    "width": 185.61014263074483,
+    "tabOrder": 11000
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Usage Log"
+                        }
+                      },
+                      "Property": "create_datetime"
+                    }
+                  },
+                  "Function": 4
+                }
+              },
+              "queryRef": "Min(Usage Log.create_datetime)",
+              "nativeQueryRef": "Latest Operation Date",
+              "displayName": "Latest Operation Date",
+              "format": "d"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "Usage Log"
+                      }
+                    },
+                    "Property": "create_datetime"
+                  }
+                },
+                "Function": 4
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "categoryLabels": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

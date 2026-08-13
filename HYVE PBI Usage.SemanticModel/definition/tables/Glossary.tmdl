@@ -1,0 +1,40 @@
+table Glossary
+	lineageTag: 8c906f2f-e669-4509-b615-d852f0e5e483
+
+	column 'Terms Group'
+		dataType: string
+		lineageTag: 7bb878c3-f820-44a7-916c-b581e3da74e3
+		summarizeBy: none
+		sourceColumn: Terms Group
+
+		annotation SummarizationSetBy = Automatic
+
+	column Terms
+		dataType: string
+		lineageTag: a8030380-f910-43a8-972e-5d98022511e9
+		summarizeBy: none
+		sourceColumn: Terms
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Terms Description'
+		dataType: string
+		lineageTag: 640a9a45-31c9-40ea-bc96-31766afd8339
+		summarizeBy: none
+		sourceColumn: Terms Description
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Glossary = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("hVLLbsIwEPyVVU6tRIX6CVXTniggHpUqxME4S2LJ2FG8IeXvu+uEAAqop0yW2ZmdCZtN8q6srq0i4x1MfG50Mkq+DTbjTJ0YHhmC9rWj8VNAi5ogU4QvGZbWnyJ+TrajTZLi3jgjMrz18Vv6inoA5c4IVQ2ZqW+c9Sq7gpG9NxaH7BkVWAUGCwwmd5hBHXgAvupAweu6UC7nn9bzKQQ8YqUskDlgiHr38qYxDK9wZlGXB+yQGkQHbAmvgaDCGMWXLBi3mQXKZUBeqnqkvfLE/rPzloToFWKvw5QL1Oi0tJ/WHfN8jKQEq8L1Hf/fcHFkAF/eUcHTtWhRPK8XG7fvB6FAUxhdtJbSa0966POmdX2IwyPeRF7durTB+aNYG+tt/1ht/8M6Pq3KYTFZghwcusPlU7OJjJXWGAI0hgpfEyznP93ogZQQ7khd9nqpi3qy3f4B", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"Terms Group" = _t, Terms = _t, #"Terms Description" = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Terms Group", type text}, {"Terms", type text}, {"Terms Description", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

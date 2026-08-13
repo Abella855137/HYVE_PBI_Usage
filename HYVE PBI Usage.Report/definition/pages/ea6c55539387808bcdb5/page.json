@@ -1,0 +1,268 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "ea6c55539387808bcdb5",
+  "displayName": "Usage & Users",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "6170efd0a27050eec87a",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Usage Log"
+              }
+            },
+            "Property": "user_email"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "u",
+              "Entity": "Usage Log",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "Not": {
+                  "Expression": {
+                    "In": {
+                      "Expressions": [
+                        {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "u"
+                              }
+                            },
+                            "Property": "user_email"
+                          }
+                        }
+                      ],
+                      "Values": [
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'hyvepbi@synnex.com'"
+                            }
+                          }
+                        ],
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'SNX_PBISA@synnexcorp.onmicrosoft.com'"
+                            }
+                          }
+                        ],
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'SNX_PBISA@tdsynnex.com'"
+                            }
+                          }
+                        ]
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User",
+        "isHiddenInViewMode": true,
+        "objects": {
+          "general": [
+            {
+              "properties": {
+                "isInvertedSelectionMode": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "true"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "843b2dd4223d5a3cb2d6",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Usage Log"
+              }
+            },
+            "Property": "#User Name"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "User",
+        "isHiddenInViewMode": true,
+        "objects": {
+          "general": [
+            {
+              "properties": {
+                "isInvertedSelectionMode": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "true"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "pageBinding": {
+    "name": "d3dab7129ca61c5240c3",
+    "type": "Default",
+    "parameters": []
+  },
+  "objects": {
+    "background": [
+      {
+        "properties": {
+          "image": {
+            "image": {
+              "name": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'Hyve Horizontal_2022Sep 1.svg'"
+                  }
+                }
+              },
+              "url": {
+                "expr": {
+                  "ResourcePackageItem": {
+                    "PackageName": "RegisteredResources",
+                    "PackageType": 1,
+                    "ItemName": "Hyve_Horizontal_2022Sep_19232133669831806.svg"
+                  }
+                }
+              },
+              "scaling": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'Normal'"
+                  }
+                }
+              }
+            }
+          },
+          "transparency": {
+            "expr": {
+              "Literal": {
+                "Value": "0D"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "outspacePane": [
+      {
+        "properties": {
+          "width": {
+            "expr": {
+              "Literal": {
+                "Value": "399L"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visualInteractions": [
+    {
+      "source": "68a18627c24c96d4a012",
+      "target": "a8a04a0b900dcb4b3e13",
+      "type": "NoFilter"
+    },
+    {
+      "source": "68a18627c24c96d4a012",
+      "target": "10c543908ead080937a7",
+      "type": "NoFilter"
+    },
+    {
+      "source": "68a18627c24c96d4a012",
+      "target": "a99cd31d6bc0be46c06c",
+      "type": "NoFilter"
+    },
+    {
+      "source": "68a18627c24c96d4a012",
+      "target": "87ae84110c38edd3e2d3",
+      "type": "NoFilter"
+    },
+    {
+      "source": "68a18627c24c96d4a012",
+      "target": "c69b7e7c5c0c0c8602d5",
+      "type": "NoFilter"
+    },
+    {
+      "source": "68a18627c24c96d4a012",
+      "target": "690193f08e4d40ed5a21",
+      "type": "NoFilter"
+    },
+    {
+      "source": "68a18627c24c96d4a012",
+      "target": "95a895b9e92a00922d2a",
+      "type": "NoFilter"
+    },
+    {
+      "source": "a8a04a0b900dcb4b3e13",
+      "target": "68a18627c24c96d4a012",
+      "type": "NoFilter"
+    },
+    {
+      "source": "a8a04a0b900dcb4b3e13",
+      "target": "87ae84110c38edd3e2d3",
+      "type": "NoFilter"
+    },
+    {
+      "source": "a8a04a0b900dcb4b3e13",
+      "target": "a99cd31d6bc0be46c06c",
+      "type": "NoFilter"
+    },
+    {
+      "source": "a8a04a0b900dcb4b3e13",
+      "target": "10c543908ead080937a7",
+      "type": "NoFilter"
+    },
+    {
+      "source": "a8a04a0b900dcb4b3e13",
+      "target": "c69b7e7c5c0c0c8602d5",
+      "type": "NoFilter"
+    },
+    {
+      "source": "a8a04a0b900dcb4b3e13",
+      "target": "690193f08e4d40ed5a21",
+      "type": "NoFilter"
+    },
+    {
+      "source": "a8a04a0b900dcb4b3e13",
+      "target": "95a895b9e92a00922d2a",
+      "type": "NoFilter"
+    },
+    {
+      "source": "1ed74e2ca0cb7ee14ecc",
+      "target": "68a18627c24c96d4a012",
+      "type": "DataFilter"
+    }
+  ]
+}

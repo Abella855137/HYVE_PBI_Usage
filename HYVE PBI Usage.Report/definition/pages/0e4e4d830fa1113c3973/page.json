@@ -1,0 +1,112 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "0e4e4d830fa1113c3973",
+  "displayName": "RLS User DNA Info",
+  "displayOption": "ActualSize",
+  "height": 320,
+  "width": 860,
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "56697f2f7aba2f6adc75",
+        "field": {
+          "HierarchyLevel": {
+            "Expression": {
+              "Hierarchy": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "RLS Combine"
+                  }
+                },
+                "Hierarchy": "User Name Hierarchy"
+              }
+            },
+            "Level": "#User Name Additional"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "r",
+              "Entity": "RLS Combine",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "r"
+                          }
+                        },
+                        "Property": "#User Name Additional"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'Frank Li'"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "Drillthrough"
+      }
+    ]
+  },
+  "pageBinding": {
+    "name": "89cd8d9a67e3fa733668",
+    "type": "Drillthrough",
+    "parameters": [
+      {
+        "name": "037bb9d946418afab004",
+        "boundFilter": "56697f2f7aba2f6adc75",
+        "fieldExpr": {
+          "HierarchyLevel": {
+            "Expression": {
+              "Hierarchy": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "RLS Combine"
+                  }
+                },
+                "Hierarchy": "User Name Hierarchy"
+              }
+            },
+            "Level": "#User Name Additional"
+          }
+        }
+      }
+    ]
+  },
+  "objects": {
+    "displayArea": [
+      {
+        "properties": {
+          "verticalAlignment": {
+            "expr": {
+              "Literal": {
+                "Value": "'Middle'"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visibility": "HiddenInViewMode"
+}

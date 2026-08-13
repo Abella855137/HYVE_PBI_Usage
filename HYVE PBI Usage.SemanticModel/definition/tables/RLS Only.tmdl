@@ -1,0 +1,33 @@
+table 'RLS Only'
+	lineageTag: f8aa1f5a-950b-4791-a7cc-282fdae97bbe
+
+	column UPN
+		lineageTag: 3c159b53-725b-4a32-98b1-8a99dab8476f
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: RLS Combine[UPN]
+
+		annotation SummarizationSetBy = Automatic
+
+	column #GID =
+			
+			MINX(
+			    FILTER(
+			        'RLS Combine',
+			        'RLS Combine'[UPN] = 'RLS Only'[UPN] &&
+			        NOT ISBLANK('RLS Combine'[Global ID])
+			    ),
+			    'RLS Combine'[Global ID]
+			)
+		formatString: 0
+		lineageTag: 6ef30c0e-69c1-4750-947f-e3331b0f9565
+		summarizeBy: count
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'RLS Only' = calculated
+		mode: import
+		source = SUMMARIZE('RLS Combine',[UPN])
+
+	annotation PBI_Id = 145fc3d7cfb14556a4c6943bb606767d
+

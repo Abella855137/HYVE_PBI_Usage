@@ -1,0 +1,492 @@
+table 'Usage Log'
+	lineageTag: c9c9ad04-022c-4c95-a33f-5d8e468656ac
+
+	measure '~Total Operation' = COUNTROWS('Usage Log')
+		formatString: 0
+		lineageTag: 464a036c-d93e-4794-8dae-dd0f562b380e
+
+	measure '~Accumulative Operation' = CALCULATE([~Total Operation],FILTER(ALL('Date'),'Date'[Date]<=MAX('Date'[Date])))
+		formatString: 0
+		lineageTag: 3a7767fe-4e2c-4f83-b340-743867f113b5
+
+	measure '~Download Count' = CALCULATE(COUNTROWS('Usage Log'),'Usage Log'[#Operation Group] = "Download")
+		formatString: 0
+		lineageTag: 4d3b14d9-0cbf-4b13-b978-dad9e7a5decf
+
+	measure '~View Count' = CALCULATE(COUNTROWS('Usage Log'),'Usage Log'[#Operation Group] = "View")
+		formatString: 0
+		lineageTag: d2624975-4a09-437b-b018-0a9440527bb1
+
+	measure '~Print Count' = CALCULATE(COUNTROWS('Usage Log'),'Usage Log'[#Operation Group] = "Print")
+		formatString: 0
+		lineageTag: 30db9dff-7a1e-4b8c-8962-89a465e7d7e7
+
+	measure '~Share Count' = CALCULATE(COUNTROWS('Usage Log'),'Usage Log'[#Operation Group] = "Share")
+		formatString: 0
+		lineageTag: 434052d1-cc5d-4eb7-ab33-af84b1a600e5
+
+	measure '~Export Count' = CALCULATE(COUNTROWS('Usage Log'),'Usage Log'[#Operation Group] = "Export")
+		formatString: 0
+		lineageTag: a8f65851-831a-4dba-9f28-ef20aae4daf6
+
+	measure '~Deployed Days' = DATEDIFF(MIN('Usage Log'[create_datetime]),MAX('Usage Log'[create_datetime]),DAY)+1
+		formatString: 0
+		lineageTag: a2ab59dd-3e99-4bec-9592-d8cbf8ace986
+
+	measure ~Recency =
+			
+			VAR LastActive = CALCULATE( MAX('Usage Log'[create_datetime]), ALLEXCEPT('Usage Log', 'Usage Log'[#User Name]) )
+			RETURN
+			DATEDIFF(LastActive, TODAY(), DAY)
+		formatString: 0
+		lineageTag: 5cedd90b-5af8-4954-a205-2251f272802a
+
+	measure ~View/Day = DIVIDE([~Total Operation],[~Deployed Days])
+		lineageTag: 3c9de581-9439-4b23-bc72-b963ffc96661
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure ~ActiveMonths = ```
+			
+			    CALCULATE(
+			        DISTINCTCOUNT('Usage Log'[#Operation Month]),  // 唯一有效月份数
+			        ALLEXCEPT('Usage Log', 'Usage Log'[#User Name])  // 按用户分组
+			    )
+			```
+		formatString: 0
+		lineageTag: c7841e94-ef65-44db-8368-0c79fb8d561a
+
+	measure '~Operation in 3 Month' = ```
+			
+			CALCULATE(
+			    COUNTROWS('Usage Log'), 
+			    'Usage Log'[create_datetime] >= DATE(YEAR(TODAY()), MONTH(TODAY()) - 2, 1),
+			    ALLEXCEPT('Usage Log', 'Usage Log'[#User Name], 'Usage Log'[user_email])
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 71ffe713-fdff-446a-b50b-2475b13afd78
+
+	measure '~First-Last Operation Month' =
+			
+			VAR First_Login = CALCULATE(MIN('Usage Log'[create_datetime]), ALLEXCEPT('Usage Log','Usage Log'[#User Name], 'Usage Log'[user_email]))
+			VAR Last_Login = CALCULATE(MAX('Usage Log'[create_datetime]), ALLEXCEPT('Usage Log', 'Usage Log'[#User Name], 'Usage Log'[user_email]))
+			VAR Result = DATEDIFF(First_Login, Last_Login, MONTH)
+			RETURN Result
+		formatString: 0
+		lineageTag: 257fb44f-ac5e-4bda-a6cb-0b8b94ced5f5
+
+	measure '~Latest Active' =
+			
+			VAR Last_Login = CALCULATE(MAX('Usage Log'[create_datetime]), ALLEXCEPT('Usage Log', 'Usage Log'[#User Name], 'Usage Log'[user_email]))
+			VAR Recency = DATEDIFF(Last_Login, TODAY(), MONTH)
+			VAR Result = SWITCH(
+			                TRUE(),
+			                Recency <= 1, "In a Month",
+			                Recency <= 3, "In 3 Month",
+			                Recency <= 6, "In 6 Month",
+			                "Beyond 6 Month")
+			RETURN Result
+		lineageTag: df3eef90-8a4b-4131-82c8-8a94af176a6e
+
+	measure ~CF = ```
+			
+			VAR IsDevList = {"Wendy Wang", "Matt Xie", "Abella Xu"} 
+			VAR IsDev = NOT ISEMPTY( 
+			    FILTER( 
+			        VALUES('Usage Log'[#User Name]),
+			        'Usage Log'[#User Name] IN IsDevList
+			    )
+			)
+			VAR Result = IF(IsDev, 1, 0)
+			RETURN Result
+			```
+		formatString: 0
+		lineageTag: d9768186-9527-4f22-a62b-2ab8672a2a23
+
+	column menulog_odom
+		dataType: int64
+		formatString: 0
+		lineageTag: 3118e33c-f1bc-4031-a58c-5dde33f250c5
+		summarizeBy: sum
+		sourceColumn: menulog_odom
+
+		annotation SummarizationSetBy = Automatic
+
+	column auditlog_id
+		dataType: string
+		lineageTag: d0ccec0e-2ff2-4afa-be04-65f394da9f68
+		summarizeBy: none
+		sourceColumn: auditlog_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column env_type
+		dataType: string
+		lineageTag: 63dfbedf-4db0-46f9-b2ee-b9edbed60353
+		summarizeBy: none
+		sourceColumn: env_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column content_location_type
+		dataType: string
+		lineageTag: 358aae07-ebf8-49e8-b40e-a3815eacbc54
+		summarizeBy: none
+		sourceColumn: content_location_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column workspace_id
+		dataType: string
+		lineageTag: 83454020-3474-482f-b32f-371d7d41c3bb
+		summarizeBy: none
+		sourceColumn: workspace_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column workspace_name
+		dataType: string
+		lineageTag: d28dd799-1def-4b37-9a96-3d9da9773568
+		summarizeBy: none
+		sourceColumn: workspace_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column report_id
+		dataType: string
+		lineageTag: 7daa065e-4e0a-4e40-a7a1-a4baf4182033
+		summarizeBy: none
+		sourceColumn: report_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column report_name
+		dataType: string
+		lineageTag: 2a810f82-17ee-4606-942a-987d2df33da5
+		summarizeBy: none
+		sourceColumn: report_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column dataset_id
+		dataType: string
+		lineageTag: 3993ac22-ed24-4cae-a548-96446415b359
+		summarizeBy: none
+		sourceColumn: dataset_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column dataset_name
+		dataType: string
+		lineageTag: 49fb2f3a-784c-4ef1-ad97-cef3ad2b6743
+		summarizeBy: none
+		sourceColumn: dataset_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column dashboard_id
+		dataType: string
+		lineageTag: a7de4f03-98f3-4ff6-bb68-c554d44318c5
+		summarizeBy: none
+		sourceColumn: dashboard_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column dashboard_name
+		dataType: string
+		lineageTag: 33fcd18a-ab04-49cb-89c6-7198ade21f45
+		summarizeBy: none
+		sourceColumn: dashboard_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column objectid
+		dataType: string
+		lineageTag: d9a3b034-576e-4ea0-ab5c-ec71ac4deb3c
+		summarizeBy: none
+		sourceColumn: objectid
+
+		annotation SummarizationSetBy = Automatic
+
+	column user_email
+		dataType: string
+		lineageTag: d28e6b37-65b9-465c-9763-a6a3e012d725
+		summarizeBy: none
+		sourceColumn: user_email
+
+		annotation SummarizationSetBy = Automatic
+
+	column loginid
+		dataType: string
+		lineageTag: 14acbdd4-4111-452d-9828-310dc9163f72
+		summarizeBy: none
+		sourceColumn: loginid
+
+		annotation SummarizationSetBy = Automatic
+
+	column globalid
+		dataType: int64
+		formatString: 0
+		lineageTag: e0754fa5-ac09-40f8-b2d2-ba1ef7e8e843
+		summarizeBy: sum
+		sourceColumn: globalid
+
+		annotation SummarizationSetBy = Automatic
+
+	column create_datetime
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 200eeafb-ab18-4eae-b20b-d25dc8888ab2
+		summarizeBy: none
+		sourceColumn: create_datetime
+
+		variation Variation
+			isDefault
+			relationship: e1382a2b-35db-481e-a9ca-f2f165399ee3
+			defaultHierarchy: LocalDateTable_98db0f42-0105-4780-83b0-ff24c5e364e2.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column operation
+		dataType: string
+		lineageTag: 3f13a8dc-64c2-45be-8aff-68d77d5d26bc
+		summarizeBy: none
+		sourceColumn: operation
+
+		annotation SummarizationSetBy = Automatic
+
+	column operation_cat
+		dataType: string
+		lineageTag: 766575e5-b366-4bc0-8443-bd4ca7087dd7
+		summarizeBy: none
+		sourceColumn: operation_cat
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_success
+		dataType: string
+		lineageTag: db12466b-ed8c-4f6c-bc78-dd57d3589072
+		summarizeBy: none
+		sourceColumn: is_success
+
+		annotation SummarizationSetBy = Automatic
+
+	column sharing_information
+		dataType: string
+		lineageTag: b5e88b5a-8a2b-4160-8360-ba650cd36234
+		summarizeBy: none
+		sourceColumn: sharing_information
+
+		annotation SummarizationSetBy = Automatic
+
+	column user_information
+		dataType: string
+		lineageTag: 59ffd92c-5559-4a6a-b0b5-cfbbce435752
+		summarizeBy: none
+		sourceColumn: user_information
+
+		annotation SummarizationSetBy = Automatic
+
+	column org_app_permission
+		dataType: string
+		lineageTag: 62b99fdb-29ad-44e1-8df1-fd167f4cdda8
+		summarizeBy: none
+		sourceColumn: org_app_permission
+
+		annotation SummarizationSetBy = Automatic
+
+	column client_ip
+		dataType: string
+		lineageTag: dfe90010-7666-49bf-bf3e-1fb4ef38ebc4
+		summarizeBy: none
+		sourceColumn: client_ip
+
+		annotation SummarizationSetBy = Automatic
+
+	column explorer_type
+		dataType: string
+		lineageTag: 9b5d7a3c-a050-4166-bc12-5149bfb3d2cf
+		summarizeBy: none
+		sourceColumn: explorer_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column os
+		dataType: string
+		lineageTag: be5fe88c-f7e3-4132-ae4e-565c84279a76
+		summarizeBy: none
+		sourceColumn: os
+
+		annotation SummarizationSetBy = Automatic
+
+	column location
+		dataType: string
+		lineageTag: e89f647d-d978-4132-88eb-17bb3c341513
+		summarizeBy: none
+		sourceColumn: location
+
+		annotation SummarizationSetBy = Automatic
+
+	column load_time
+		dataType: int64
+		formatString: 0
+		lineageTag: f7ac5f99-64aa-4a42-a119-12acd5f0903f
+		summarizeBy: sum
+		sourceColumn: load_time
+
+		annotation SummarizationSetBy = Automatic
+
+	column time_zone
+		dataType: int64
+		formatString: 0
+		lineageTag: 709e1d48-1211-426e-90ae-902b84816552
+		summarizeBy: sum
+		sourceColumn: time_zone
+
+		annotation SummarizationSetBy = Automatic
+
+	column resource_id
+		dataType: string
+		lineageTag: 27c9e1a8-e168-4a7b-bfc5-2f45f335f1e9
+		summarizeBy: none
+		sourceColumn: resource_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column entry_id
+		dataType: int64
+		formatString: 0
+		lineageTag: e2e0ba71-207a-41cd-b6b7-cd8819d1a50a
+		summarizeBy: sum
+		sourceColumn: entry_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column entry_datetime
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: f5b2e37e-345c-4b73-9438-87bff165a128
+		summarizeBy: none
+		sourceColumn: entry_datetime
+
+		variation Variation
+			isDefault
+			relationship: 737f0bc7-6ebf-46eb-8f75-17e9d4bcb125
+			defaultHierarchy: LocalDateTable_639c815b-939e-4ee0-9767-1f71fa0fa918.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column update_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 78c6f500-0de0-4ddf-bcb8-48478a357834
+		summarizeBy: sum
+		sourceColumn: update_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column update_datetime
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: ffc19001-1a3d-4a76-8bbe-1ae3d26d6bc3
+		summarizeBy: none
+		sourceColumn: update_datetime
+
+		variation Variation
+			isDefault
+			relationship: 27290b4c-d93e-4791-8c45-0e4b3f90c4ae
+			defaultHierarchy: LocalDateTable_8f6264c6-baa2-4f50-b183-5e481f1299f8.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column #Date = 'Usage Log'[create_datetime].[Date]
+		formatString: General Date
+		lineageTag: cb12bf03-8280-49ce-a2f6-e5d7f0339649
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column #Source = IF('Usage Log'[env_type] = "MS Cloud","Cloud","CIS")
+		lineageTag: a3446c9f-3f0c-4c9c-8ebf-e44359d9be82
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column '#User Name' = ```
+			
+			VAR CIS_GID = LOOKUPVALUE('Employee Info'[Name],'Employee Info'[Employee Global ID],'Usage Log'[globalid])
+			VAR C_NOW = LOOKUPVALUE('Employee Info'[Name],'Employee Info'[userPrincipalName],'Usage Log'[user_email])
+			VAR C_TD = LOOKUPVALUE('Employee Info'[Name],'Employee Info'[tdsnx_upn],'Usage Log'[user_email])
+			VAR C_LTD = LOOKUPVALUE('Employee Info'[Name],'Employee Info'[ltd_upn],'Usage Log'[user_email])
+			VAR RESULT = 
+			IF('Usage Log'[env_type] = "SYNNEX CENTRAL",IF(CIS_GID <> BLANK(), CIS_GID, "Others"),
+			SWITCH(
+			    TRUE(),
+			    C_NOW <> BLANK(), C_NOW,
+			    C_TD  <> BLANK(), C_TD,
+			    C_LTD <> BLANK(), C_LTD,
+			    "Others"
+			))
+			RETURN RESULT
+			```
+		lineageTag: cdde2875-0aec-4cd0-8900-8712825f516c
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column '#Operation Group' =
+			
+			IF(SEARCH("*Download*",'Usage Log'[Operation],1,0),"Download",
+			IF(SEARCH("*View*",'Usage Log'[Operation],1,0),"View",
+			IF(SEARCH("*Print*",'Usage Log'[Operation],1,0),"Print",
+			IF(SEARCH("*Share*",'Usage Log'[Operation],1,0),"Share",
+			IF(SEARCH("*Export*",'Usage Log'[Operation],1,0),"Export","Other Operations")))))
+		lineageTag: 7e350321-8d98-4c42-b411-6dd22e3bda2a
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column '#Last Activity Diff'
+		type: calculated
+		lineageTag: ce500acc-8760-4f3f-b942-9ec66402cdf3
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column '#Operation Month' = FORMAT('Usage Log'[create_datetime], "YYYY-MM")
+		lineageTag: b153e820-3cf0-4e95-a45e-8f338bfe20d5
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column '#Account/Name Mapping Failed' = IF('Usage Log'[#User Name] = "Others", IF('Usage Log'[globalid] <> BLANK(), "Resigned", "UPN changed and no matching"))
+		lineageTag: 1de6f982-ab30-4647-8201-01507072404b
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	hierarchy '#User Name Hierarchy'
+		lineageTag: 7207efe5-eb88-4417-8f74-3f0410a21c70
+
+		level '#User Name'
+			lineageTag: ed4fdf6e-9918-4c25-9082-6d163bceb83d
+			column: '#User Name'
+
+		level user_email
+			lineageTag: f60156c7-e573-48e9-97c1-5024fc24134f
+			column: user_email
+
+	partition 'Usage Log' = m
+		mode: import
+		source =
+				let
+				    Source = Odbc.Query("dsn=vertica_prod", "Select *#(lf)FROM dw_gbl.dwd_pub_log_pbi_content_access_log#(lf)WHERE workspace_name IN ('Hyve Corp')")
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+
