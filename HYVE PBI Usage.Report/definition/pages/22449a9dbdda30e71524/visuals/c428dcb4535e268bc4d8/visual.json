@@ -17,50 +17,49 @@
           "projections": [
             {
               "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "RLS Combine New"
+                    }
+                  },
+                  "Property": "Report Name"
+                }
+              },
+              "queryRef": "RLS Combine New.Report Name",
+              "nativeQueryRef": "Report Name"
+            },
+            {
+              "field": {
                 "HierarchyLevel": {
                   "Expression": {
                     "Hierarchy": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "RLS Combine"
+                          "Entity": "RLS Combine New"
                         }
                       },
-                      "Hierarchy": "Report Name Hierarchy"
+                      "Hierarchy": "#User Name Additional Hierarchy"
                     }
                   },
-                  "Level": "Report Name"
+                  "Level": "#User Name Additional"
                 }
               },
-              "queryRef": "RLS Combine.Report Name Hierarchy.Report Name",
-              "nativeQueryRef": "Report Name Hierarchy Report Name"
+              "queryRef": "RLS Combine New.#User Name Additional Hierarchy.#User Name Additional",
+              "nativeQueryRef": "#User Name Additional Hierarchy #User Name Additional"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "RLS Combine"
-                    }
-                  },
-                  "Property": "#User Name Additional"
-                }
-              },
-              "queryRef": "RLS Combine.#User Name Additional",
-              "nativeQueryRef": "User Name",
-              "displayName": "User Name"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "RLS Combine"
+                      "Entity": "RLS Combine New"
                     }
                   },
                   "Property": "#Has SPY"
                 }
               },
-              "queryRef": "RLS Combine.#Has SPY",
+              "queryRef": "RLS Combine New.#Has SPY",
               "nativeQueryRef": "Has SPY",
               "displayName": "Has SPY"
             },
@@ -69,13 +68,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "RLS Combine"
+                      "Entity": "RLS Combine New"
                     }
                   },
                   "Property": "UPN"
                 }
               },
-              "queryRef": "RLS Combine.UPN",
+              "queryRef": "RLS Combine New.UPN",
               "nativeQueryRef": "UPN"
             },
             {
@@ -83,34 +82,32 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "RLS Combine"
+                      "Entity": "RLS Combine New"
+                    }
+                  },
+                  "Property": "#GID"
+                }
+              },
+              "queryRef": "CountNonNull(RLS Combine New.#GID)",
+              "nativeQueryRef": "GID",
+              "displayName": "GID"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "RLS Combine New"
                     }
                   },
                   "Property": "Active"
                 }
               },
-              "queryRef": "RLS Combine.Active",
+              "queryRef": "RLS Combine New.Active",
               "nativeQueryRef": "Active"
             }
           ]
         }
-      },
-      "sortDefinition": {
-        "sort": [
-          {
-            "field": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "RLS Combine"
-                  }
-                },
-                "Property": "#Has SPY"
-              }
-            },
-            "direction": "Ascending"
-          }
-        ]
       }
     },
     "objects": {
@@ -333,43 +330,7 @@
                                   "Column": {
                                     "Expression": {
                                       "SourceRef": {
-                                        "Entity": "RLS Combine"
-                                      }
-                                    },
-                                    "Property": "#Has SPY"
-                                  }
-                                },
-                                "Function": 3
-                              }
-                            },
-                            "Right": {
-                              "Literal": {
-                                "Value": "'Y'"
-                              }
-                            }
-                          },
-                          "Annotations": {
-                            "PowerBI.SQExprEvaluationKind": 1,
-                            "PowerBI.SQExprTextOperatorOption": 2
-                          }
-                        },
-                        "Value": {
-                          "Literal": {
-                            "Value": "'TrafficHighLight'"
-                          }
-                        }
-                      },
-                      {
-                        "Condition": {
-                          "Comparison": {
-                            "ComparisonKind": 0,
-                            "Left": {
-                              "Aggregation": {
-                                "Expression": {
-                                  "Column": {
-                                    "Expression": {
-                                      "SourceRef": {
-                                        "Entity": "RLS Combine"
+                                        "Entity": "RLS Combine New"
                                       }
                                     },
                                     "Property": "#Has SPY"
@@ -394,6 +355,42 @@
                             "Value": "'TrafficLowLight'"
                           }
                         }
+                      },
+                      {
+                        "Condition": {
+                          "Comparison": {
+                            "ComparisonKind": 0,
+                            "Left": {
+                              "Aggregation": {
+                                "Expression": {
+                                  "Column": {
+                                    "Expression": {
+                                      "SourceRef": {
+                                        "Entity": "RLS Combine New"
+                                      }
+                                    },
+                                    "Property": "#Has SPY"
+                                  }
+                                },
+                                "Function": 3
+                              }
+                            },
+                            "Right": {
+                              "Literal": {
+                                "Value": "'Y'"
+                              }
+                            }
+                          },
+                          "Annotations": {
+                            "PowerBI.SQExprEvaluationKind": 1,
+                            "PowerBI.SQExprTextOperatorOption": 2
+                          }
+                        },
+                        "Value": {
+                          "Literal": {
+                            "Value": "'TrafficHighLight'"
+                          }
+                        }
                       }
                     ]
                   }
@@ -409,7 +406,7 @@
                 }
               }
             ],
-            "metadata": "RLS Combine.#Has SPY"
+            "metadata": "RLS Combine New.#Has SPY"
           }
         }
       ],

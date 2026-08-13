@@ -25,14 +25,14 @@
                           "Entity": "PBI Spy User Access"
                         }
                       },
-                      "Property": "email_address"
+                      "Property": "global_employee_id"
                     }
                   },
                   "Function": 2
                 }
               },
-              "queryRef": "Min(PBI Spy User Access.email_address)",
-              "nativeQueryRef": "Count of email_address"
+              "queryRef": "Sum(PBI Spy User Access.global_employee_id)",
+              "nativeQueryRef": "Count of global_employee_id"
             }
           ]
         }
@@ -49,7 +49,7 @@
                         "Entity": "PBI Spy User Access"
                       }
                     },
-                    "Property": "email_address"
+                    "Property": "global_employee_id"
                   }
                 },
                 "Function": 2
@@ -181,15 +181,15 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "3adcdbf74c912d601e5c",
+        "name": "1f9887d648098db4b480",
         "field": {
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "PBI Spy User Access"
+                "Entity": "Access"
               }
             },
-            "Property": "~Has RLS"
+            "Property": "#Type"
           }
         },
         "type": "Categorical",
@@ -197,8 +197,8 @@
           "Version": 2,
           "From": [
             {
-              "Name": "p",
-              "Entity": "PBI Spy User Access",
+              "Name": "a",
+              "Entity": "Access",
               "Type": 0
             }
           ],
@@ -211,10 +211,10 @@
                       "Column": {
                         "Expression": {
                           "SourceRef": {
-                            "Source": "p"
+                            "Source": "a"
                           }
                         },
-                        "Property": "~Has RLS"
+                        "Property": "#Type"
                       }
                     }
                   ],
@@ -222,7 +222,7 @@
                     [
                       {
                         "Literal": {
-                          "Value": "'N'"
+                          "Value": "'2. SPY Only'"
                         }
                       }
                     ]

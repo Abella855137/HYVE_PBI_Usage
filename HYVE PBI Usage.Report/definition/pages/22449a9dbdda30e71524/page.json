@@ -8,39 +8,57 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "2e4134d3ef5fb4beceb5",
+        "name": "eb5ecdff017676f7cc83",
         "field": {
-          "Measure": {
+          "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "User Access"
+                "Entity": "Access"
               }
             },
-            "Property": "~Total User"
+            "Property": "GID"
           }
         },
-        "type": "Categorical",
-        "howCreated": "Drillthrough"
-      }
-    ]
-  },
-  "pageBinding": {
-    "name": "8e34a5339ce774c2e0bf",
-    "type": "Drillthrough",
-    "parameters": [
-      {
-        "name": "444adfd9438388ae5347",
-        "boundFilter": "2e4134d3ef5fb4beceb5",
-        "fieldExpr": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "User Access"
+        "type": "Advanced",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "a",
+              "Entity": "Access",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "Not": {
+                  "Expression": {
+                    "Comparison": {
+                      "ComparisonKind": 0,
+                      "Left": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Source": "a"
+                            }
+                          },
+                          "Property": "GID"
+                        }
+                      },
+                      "Right": {
+                        "Literal": {
+                          "Value": "null"
+                        }
+                      }
+                    }
+                  }
+                }
               }
-            },
-            "Property": "~Total User"
-          }
-        }
+            }
+          ]
+        },
+        "howCreated": "User"
       }
     ]
   },

@@ -23,6 +23,20 @@
                       "Entity": "PBI Spy User Access"
                     }
                   },
+                  "Property": "report_name"
+                }
+              },
+              "queryRef": "PBI Spy User Access.report_name",
+              "nativeQueryRef": "report_name"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "PBI Spy User Access"
+                    }
+                  },
                   "Property": "user_name"
                 }
               },

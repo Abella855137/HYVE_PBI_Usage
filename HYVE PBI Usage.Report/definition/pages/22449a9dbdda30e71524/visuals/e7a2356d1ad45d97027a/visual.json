@@ -5,7 +5,7 @@
     "x": 0,
     "y": 214,
     "z": 6000,
-    "height": 120,
+    "height": 132,
     "width": 192,
     "tabOrder": 6000
   },
@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "User Access"
+                      "Entity": "Access"
                     }
                   },
-                  "Property": "#Validate"
+                  "Property": "#Type"
                 }
               },
-              "queryRef": "User Access.#Validate",
-              "nativeQueryRef": "#Validate",
+              "queryRef": "Access.#Type",
+              "nativeQueryRef": "#Type",
               "active": true
             }
           ]
@@ -179,15 +179,15 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "9717cee5f1fe7e5c0bd8",
+        "name": "41c90a3cc4e5154a633d",
         "field": {
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "User Access"
+                "Entity": "Access"
               }
             },
-            "Property": "#Validate"
+            "Property": "#Type"
           }
         },
         "type": "Categorical",
@@ -195,8 +195,8 @@
           "Version": 2,
           "From": [
             {
-              "Name": "u",
-              "Entity": "User Access",
+              "Name": "a",
+              "Entity": "Access",
               "Type": 0
             }
           ],
@@ -211,10 +211,10 @@
                           "Column": {
                             "Expression": {
                               "SourceRef": {
-                                "Source": "u"
+                                "Source": "a"
                               }
                             },
-                            "Property": "#Validate"
+                            "Property": "#Type"
                           }
                         }
                       ],

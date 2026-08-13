@@ -4,11 +4,11 @@
   "name": "dca926849641c328941c",
   "options": {
     "targetVisualNames": [
-      "aa198d7599cce24e0967"
+      "7cbf0d196cdf63bce36b"
     ]
   },
   "explorationState": {
-    "version": "1.3",
+    "version": "1.5",
     "activeSection": "22449a9dbdda30e71524",
     "filters": {
       "byName": {
@@ -122,19 +122,57 @@
         "filters": {
           "byExpr": [
             {
-              "name": "2e4134d3ef5fb4beceb5",
-              "type": "Categorical",
+              "name": "eb5ecdff017676f7cc83",
+              "type": "Advanced",
+              "filter": {
+                "Version": 2,
+                "From": [
+                  {
+                    "Name": "a",
+                    "Entity": "Access",
+                    "Type": 0
+                  }
+                ],
+                "Where": [
+                  {
+                    "Condition": {
+                      "Not": {
+                        "Expression": {
+                          "Comparison": {
+                            "ComparisonKind": 0,
+                            "Left": {
+                              "Column": {
+                                "Expression": {
+                                  "SourceRef": {
+                                    "Source": "a"
+                                  }
+                                },
+                                "Property": "GID"
+                              }
+                            },
+                            "Right": {
+                              "Literal": {
+                                "Value": "null"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
               "expression": {
-                "Measure": {
+                "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "User Access"
+                      "Entity": "Access"
                     }
                   },
-                  "Property": "~Total User"
+                  "Property": "GID"
                 }
               },
-              "howCreated": 5
+              "howCreated": 1
             }
           ]
         },
@@ -149,28 +187,43 @@
             "filters": {
               "byExpr": [
                 {
-                  "name": "72d4781138d1e504e088",
+                  "name": "44fa49fa06d3ab94bbe0",
                   "type": "Categorical",
                   "expression": {
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "RLS Combine"
+                          "Entity": "RLS Combine New"
                         }
                       },
-                      "Property": "#User Name Additional"
+                      "Property": "Report Name"
                     }
                   },
                   "howCreated": 0
                 },
                 {
-                  "name": "9489b436d4431c8b1827",
+                  "name": "c827c2757108d278980e",
                   "type": "Categorical",
                   "expression": {
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "RLS Combine"
+                          "Entity": "RLS Combine New"
+                        }
+                      },
+                      "Property": "#Has SPY"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "17a71f700e93a73d58c6",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "RLS Combine New"
                         }
                       },
                       "Property": "UPN"
@@ -179,13 +232,28 @@
                   "howCreated": 0
                 },
                 {
-                  "name": "f10e68b34236cbe80a65",
+                  "name": "1244a32d2157106038da",
+                  "type": "Advanced",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "RLS Combine New"
+                        }
+                      },
+                      "Property": "#GID"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "6ed500b60e9884ba9e13",
                   "type": "Categorical",
                   "expression": {
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "RLS Combine"
+                          "Entity": "RLS Combine New"
                         }
                       },
                       "Property": "Active"
@@ -194,36 +262,16 @@
                   "howCreated": 0
                 },
                 {
-                  "name": "d4a0b64aed6065563cec",
-                  "type": "Categorical",
-                  "expression": {
-                    "HierarchyLevel": {
-                      "Expression": {
-                        "Hierarchy": {
-                          "Expression": {
-                            "SourceRef": {
-                              "Entity": "RLS Combine"
-                            }
-                          },
-                          "Hierarchy": "Report Name Hierarchy"
-                        }
-                      },
-                      "Level": "Report Name"
-                    }
-                  },
-                  "howCreated": 0
-                },
-                {
-                  "name": "2643a9b789d23639049e",
+                  "name": "fb2c50a7cc8c1bc83b46",
                   "type": "Categorical",
                   "expression": {
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "RLS Combine"
+                          "Entity": "RLS Combine New"
                         }
                       },
-                      "Property": "#Has SPY"
+                      "Property": "#User Name Additional"
                     }
                   },
                   "howCreated": 0
@@ -232,29 +280,14 @@
             },
             "singleVisual": {
               "visualType": "tableEx",
-              "objects": {},
-              "orderBy": [
-                {
-                  "Direction": 1,
-                  "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "RLS Combine"
-                        }
-                      },
-                      "Property": "#Has SPY"
-                    }
-                  }
-                }
-              ]
+              "objects": {}
             }
           },
           "9898b5dec08d55ae7c20": {
             "filters": {
               "byExpr": [
                 {
-                  "name": "1c5a654b54b004401427",
+                  "name": "fb3744e09c1ea99405d0",
                   "type": "Advanced",
                   "expression": {
                     "Column": {
@@ -269,7 +302,7 @@
                   "howCreated": 0
                 },
                 {
-                  "name": "dcc688fa42a3c10545b5",
+                  "name": "56e2586b0bcaac8b94a9",
                   "type": "Categorical",
                   "expression": {
                     "Column": {
@@ -284,7 +317,7 @@
                   "howCreated": 0
                 },
                 {
-                  "name": "2ad9a56e4e107a702c9b",
+                  "name": "caec90cd102eecc4a03a",
                   "type": "Categorical",
                   "expression": {
                     "Column": {
@@ -299,7 +332,7 @@
                   "howCreated": 0
                 },
                 {
-                  "name": "a81419c38bb09a06aea0",
+                  "name": "5616ada040b51d3a62e6",
                   "type": "Categorical",
                   "expression": {
                     "Column": {
@@ -314,7 +347,7 @@
                   "howCreated": 0
                 },
                 {
-                  "name": "c723883100480be39090",
+                  "name": "d7d2f41c54346a0016ed",
                   "type": "Categorical",
                   "expression": {
                     "Column": {
@@ -329,7 +362,7 @@
                   "howCreated": 0
                 },
                 {
-                  "name": "b86b6db00c7c00a1ce28",
+                  "name": "94939de74004d4b1695c",
                   "type": "Categorical",
                   "expression": {
                     "Column": {
@@ -339,6 +372,21 @@
                         }
                       },
                       "Property": "email_address"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "7f323105360b40b538ac",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "PBI Spy User Access"
+                        }
+                      },
+                      "Property": "report_name"
                     }
                   },
                   "howCreated": 0
@@ -369,13 +417,13 @@
             "filters": {
               "byExpr": [
                 {
-                  "name": "d6e090854979901c7647",
+                  "name": "92e871368a362c469a7a",
                   "type": "Categorical",
                   "expression": {
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "RLS Combine"
+                          "Entity": "RLS Combine New"
                         }
                       },
                       "Property": "Active"
@@ -389,6 +437,53 @@
               "visualType": "slicer",
               "objects": {
                 "merge": {
+                  "general": [
+                    {
+                      "properties": {
+                        "filter": {
+                          "filter": {
+                            "Version": 2,
+                            "From": [
+                              {
+                                "Name": "r",
+                                "Entity": "RLS Combine New",
+                                "Type": 0
+                              }
+                            ],
+                            "Where": [
+                              {
+                                "Condition": {
+                                  "In": {
+                                    "Expressions": [
+                                      {
+                                        "Column": {
+                                          "Expression": {
+                                            "SourceRef": {
+                                              "Source": "r"
+                                            }
+                                          },
+                                          "Property": "Active"
+                                        }
+                                      }
+                                    ],
+                                    "Values": [
+                                      [
+                                        {
+                                          "Literal": {
+                                            "Value": "'Y'"
+                                          }
+                                        }
+                                      ]
+                                    ]
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  ],
                   "data": [
                     {
                       "properties": {
@@ -410,7 +505,7 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "RLS Combine"
+                          "Entity": "RLS Combine New"
                         }
                       },
                       "Property": "Active"
@@ -430,7 +525,7 @@
             "filters": {
               "byExpr": [
                 {
-                  "name": "15591c3c50b511e50da3",
+                  "name": "9e7d1135104d54107064",
                   "type": "Advanced",
                   "expression": {
                     "Aggregation": {
@@ -460,14 +555,14 @@
             "filters": {
               "byExpr": [
                 {
-                  "name": "9717cee5f1fe7e5c0bd8",
+                  "name": "41c90a3cc4e5154a633d",
                   "type": "Categorical",
                   "filter": {
                     "Version": 2,
                     "From": [
                       {
-                        "Name": "u",
-                        "Entity": "User Access",
+                        "Name": "a",
+                        "Entity": "Access",
                         "Type": 0
                       }
                     ],
@@ -482,10 +577,10 @@
                                     "Column": {
                                       "Expression": {
                                         "SourceRef": {
-                                          "Source": "u"
+                                          "Source": "a"
                                         }
                                       },
-                                      "Property": "#Validate"
+                                      "Property": "#Type"
                                     }
                                   }
                                 ],
@@ -509,10 +604,10 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "User Access"
+                          "Entity": "Access"
                         }
                       },
-                      "Property": "#Validate"
+                      "Property": "#Type"
                     }
                   },
                   "howCreated": 0
@@ -544,10 +639,10 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "User Access"
+                          "Entity": "Access"
                         }
                       },
-                      "Property": "#Validate"
+                      "Property": "#Type"
                     }
                   }
                 ]
@@ -558,21 +653,74 @@
             "filters": {
               "byExpr": [
                 {
-                  "name": "1993ba80a94048040192",
+                  "name": "c99b58795bf005043aec",
                   "type": "Categorical",
-                  "expression": {
-                    "HierarchyLevel": {
-                      "Expression": {
-                        "Hierarchy": {
-                          "Expression": {
-                            "SourceRef": {
-                              "Entity": "RLS Combine"
+                  "filter": {
+                    "Version": 2,
+                    "From": [
+                      {
+                        "Name": "a",
+                        "Entity": "Access",
+                        "Type": 0
+                      }
+                    ],
+                    "Where": [
+                      {
+                        "Condition": {
+                          "Not": {
+                            "Expression": {
+                              "In": {
+                                "Expressions": [
+                                  {
+                                    "Column": {
+                                      "Expression": {
+                                        "SourceRef": {
+                                          "Source": "a"
+                                        }
+                                      },
+                                      "Property": "Report Name"
+                                    }
+                                  }
+                                ],
+                                "Values": [
+                                  [
+                                    {
+                                      "Literal": {
+                                        "Value": "null"
+                                      }
+                                    }
+                                  ]
+                                ]
+                              }
                             }
-                          },
-                          "Hierarchy": "Report Name Hierarchy"
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Access"
                         }
                       },
-                      "Level": "Report Name"
+                      "Property": "Report Name"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "7ac9d880ad8006ed0261",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Access"
+                        }
+                      },
+                      "Property": "Work Space"
                     }
                   },
                   "howCreated": 0
@@ -591,8 +739,8 @@
                             "Version": 2,
                             "From": [
                               {
-                                "Name": "r",
-                                "Entity": "RLS Combine",
+                                "Name": "a",
+                                "Entity": "Access",
                                 "Type": 0
                               }
                             ],
@@ -605,7 +753,17 @@
                                         "Column": {
                                           "Expression": {
                                             "SourceRef": {
-                                              "Source": "r"
+                                              "Source": "a"
+                                            }
+                                          },
+                                          "Property": "Work Space"
+                                        }
+                                      },
+                                      {
+                                        "Column": {
+                                          "Expression": {
+                                            "SourceRef": {
+                                              "Source": "a"
                                             }
                                           },
                                           "Property": "Report Name"
@@ -616,7 +774,12 @@
                                       [
                                         {
                                           "Literal": {
-                                            "Value": "'Hyve Global MPL'"
+                                            "Value": "'Hyve Corp'"
+                                          }
+                                        },
+                                        {
+                                          "Literal": {
+                                            "Value": "'Hyve Global B Report (bigdata-AzureBlob)'"
                                           }
                                         }
                                       ]
@@ -636,7 +799,7 @@
                         "mode": {
                           "expr": {
                             "Literal": {
-                              "Value": "'Dropdown'"
+                              "Value": "'Basic'"
                             }
                           }
                         }
@@ -661,47 +824,163 @@
               "activeProjections": {
                 "Values": [
                   {
-                    "HierarchyLevel": {
+                    "Column": {
                       "Expression": {
-                        "Hierarchy": {
-                          "Expression": {
-                            "SourceRef": {
-                              "Entity": "RLS Combine"
-                            }
-                          },
-                          "Hierarchy": "Report Name Hierarchy"
+                        "SourceRef": {
+                          "Entity": "Access"
                         }
                       },
-                      "Level": "Report Name"
+                      "Property": "Work Space"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Access"
+                        }
+                      },
+                      "Property": "Report Name"
                     }
                   }
                 ]
               },
-              "cachedFilterDisplayItems": [
-                {
-                  "id": {
-                    "scopeId": {
-                      "Comparison": {
-                        "ComparisonKind": 0,
-                        "Left": {
-                          "Column": {
-                            "Expression": {
-                              "SourceRef": {
-                                "Entity": "RLS Combine"
+              "filterExpressionMetadata": {
+                "expressions": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Access"
+                        }
+                      },
+                      "Property": "Work Space"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Access"
+                        }
+                      },
+                      "Property": "Report Name"
+                    }
+                  }
+                ],
+                "cachedValueItems": [
+                  {
+                    "identities": [
+                      {
+                        "scopeId": {
+                          "Comparison": {
+                            "ComparisonKind": 0,
+                            "Left": {
+                              "Column": {
+                                "Expression": {
+                                  "SourceRef": {
+                                    "Entity": "Access"
+                                  }
+                                },
+                                "Property": "Work Space"
                               }
                             },
-                            "Property": "Report Name"
+                            "Right": {
+                              "Literal": {
+                                "Value": "'Hyve Corp'"
+                              }
+                            }
                           }
-                        },
-                        "Right": {
-                          "Literal": {
-                            "Value": "'Hyve Global MPL'"
+                        }
+                      },
+                      {
+                        "scopeId": {
+                          "Comparison": {
+                            "ComparisonKind": 0,
+                            "Left": {
+                              "Column": {
+                                "Expression": {
+                                  "SourceRef": {
+                                    "Entity": "Access"
+                                  }
+                                },
+                                "Property": "Report Name"
+                              }
+                            },
+                            "Right": {
+                              "Literal": {
+                                "Value": "'Hyve Global B Report (bigdata-AzureBlob)'"
+                              }
+                            }
                           }
                         }
                       }
+                    ],
+                    "valueMap": {
+                      "0": "Hyve Corp",
+                      "1": "Hyve Global B Report (bigdata-AzureBlob)"
                     }
-                  },
-                  "displayName": "Hyve Global MPL"
+                  }
+                ]
+              },
+              "expansionStates": [
+                {
+                  "roles": [
+                    "Values"
+                  ],
+                  "levels": [
+                    {
+                      "queryRefs": [
+                        "Access.Work Space"
+                      ],
+                      "isCollapsed": true,
+                      "identityKeys": [
+                        {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Entity": "Access"
+                              }
+                            },
+                            "Property": "Work Space"
+                          }
+                        }
+                      ],
+                      "isPinned": true
+                    },
+                    {
+                      "queryRefs": [
+                        "Access.Report Name"
+                      ],
+                      "isCollapsed": true,
+                      "isPinned": true
+                    }
+                  ],
+                  "root": {
+                    "identityValues": null,
+                    "children": [
+                      {
+                        "identityValues": [
+                          {
+                            "Literal": {
+                              "Value": "'Hyve Accounting'"
+                            }
+                          }
+                        ],
+                        "isToggled": true
+                      },
+                      {
+                        "identityValues": [
+                          {
+                            "Literal": {
+                              "Value": "'Hyve Corp'"
+                            }
+                          }
+                        ],
+                        "isToggled": true
+                      }
+                    ]
+                  }
                 }
               ]
             }
@@ -710,37 +989,42 @@
             "filters": {
               "byExpr": [
                 {
-                  "name": "a8b3b9a901da839d0bee",
+                  "name": "faa92a4ff73e2adc6957",
                   "type": "Categorical",
                   "filter": {
                     "Version": 2,
                     "From": [
                       {
-                        "Name": "r",
-                        "Entity": "RLS Combine",
+                        "Name": "a",
+                        "Entity": "Access",
                         "Type": 0
                       }
                     ],
                     "Where": [
                       {
                         "Condition": {
-                          "Comparison": {
-                            "ComparisonKind": 0,
-                            "Left": {
-                              "Column": {
-                                "Expression": {
-                                  "SourceRef": {
-                                    "Source": "r"
+                          "In": {
+                            "Expressions": [
+                              {
+                                "Column": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Source": "a"
+                                    }
+                                  },
+                                  "Property": "#Type"
+                                }
+                              }
+                            ],
+                            "Values": [
+                              [
+                                {
+                                  "Literal": {
+                                    "Value": "'1. SPY & RLS'"
                                   }
-                                },
-                                "Property": "#Has SPY"
-                              }
-                            },
-                            "Right": {
-                              "Literal": {
-                                "Value": "'Y'"
-                              }
-                            }
+                                }
+                              ]
+                            ]
                           }
                         }
                       }
@@ -750,16 +1034,16 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "RLS Combine"
+                          "Entity": "Access"
                         }
                       },
-                      "Property": "#Has SPY"
+                      "Property": "#Type"
                     }
                   },
                   "howCreated": 1
                 },
                 {
-                  "name": "5278d62a3502410d10c8",
+                  "name": "3d164b090344b71934c4",
                   "type": "Advanced",
                   "expression": {
                     "Aggregation": {
@@ -767,10 +1051,10 @@
                         "Column": {
                           "Expression": {
                             "SourceRef": {
-                              "Entity": "RLS Combine"
+                              "Entity": "PBI Spy User Access"
                             }
                           },
-                          "Property": "UPN"
+                          "Property": "global_employee_id"
                         }
                       },
                       "Function": 2
@@ -792,10 +1076,10 @@
                         "Column": {
                           "Expression": {
                             "SourceRef": {
-                              "Entity": "RLS Combine"
+                              "Entity": "PBI Spy User Access"
                             }
                           },
-                          "Property": "UPN"
+                          "Property": "global_employee_id"
                         }
                       },
                       "Function": 2
@@ -809,14 +1093,14 @@
             "filters": {
               "byExpr": [
                 {
-                  "name": "3adcdbf74c912d601e5c",
+                  "name": "1f9887d648098db4b480",
                   "type": "Categorical",
                   "filter": {
                     "Version": 2,
                     "From": [
                       {
-                        "Name": "p",
-                        "Entity": "PBI Spy User Access",
+                        "Name": "a",
+                        "Entity": "Access",
                         "Type": 0
                       }
                     ],
@@ -829,10 +1113,10 @@
                                 "Column": {
                                   "Expression": {
                                     "SourceRef": {
-                                      "Source": "p"
+                                      "Source": "a"
                                     }
                                   },
-                                  "Property": "~Has RLS"
+                                  "Property": "#Type"
                                 }
                               }
                             ],
@@ -840,7 +1124,7 @@
                               [
                                 {
                                   "Literal": {
-                                    "Value": "'N'"
+                                    "Value": "'2. SPY Only'"
                                   }
                                 }
                               ]
@@ -854,16 +1138,16 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "PBI Spy User Access"
+                          "Entity": "Access"
                         }
                       },
-                      "Property": "~Has RLS"
+                      "Property": "#Type"
                     }
                   },
                   "howCreated": 1
                 },
                 {
-                  "name": "ec494bca02db3e1040ce",
+                  "name": "6716e5652be93c280c50",
                   "type": "Advanced",
                   "expression": {
                     "Aggregation": {
@@ -874,7 +1158,7 @@
                               "Entity": "PBI Spy User Access"
                             }
                           },
-                          "Property": "email_address"
+                          "Property": "global_employee_id"
                         }
                       },
                       "Function": 2
@@ -899,7 +1183,7 @@
                               "Entity": "PBI Spy User Access"
                             }
                           },
-                          "Property": "email_address"
+                          "Property": "global_employee_id"
                         }
                       },
                       "Function": 2
@@ -913,101 +1197,7 @@
             "filters": {
               "byExpr": [
                 {
-                  "name": "8fee0245ab76932a9d3c",
-                  "type": "Advanced",
-                  "expression": {
-                    "Measure": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "User Access"
-                        }
-                      },
-                      "Property": "~Total User"
-                    }
-                  },
-                  "howCreated": 0
-                }
-              ]
-            },
-            "singleVisual": {
-              "visualType": "card",
-              "objects": {},
-              "orderBy": [
-                {
-                  "Direction": 2,
-                  "Expression": {
-                    "Measure": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "User Access"
-                        }
-                      },
-                      "Property": "~Total User"
-                    }
-                  }
-                }
-              ]
-            }
-          },
-          "0c692b92e8b6c59c1d7c": {
-            "filters": {
-              "byExpr": [
-                {
-                  "name": "7b126f59b61222dbd853",
-                  "type": "Categorical",
-                  "filter": {
-                    "Version": 2,
-                    "From": [
-                      {
-                        "Name": "r",
-                        "Entity": "RLS Combine",
-                        "Type": 0
-                      }
-                    ],
-                    "Where": [
-                      {
-                        "Condition": {
-                          "In": {
-                            "Expressions": [
-                              {
-                                "Column": {
-                                  "Expression": {
-                                    "SourceRef": {
-                                      "Source": "r"
-                                    }
-                                  },
-                                  "Property": "#Has SPY"
-                                }
-                              }
-                            ],
-                            "Values": [
-                              [
-                                {
-                                  "Literal": {
-                                    "Value": "'N'"
-                                  }
-                                }
-                              ]
-                            ]
-                          }
-                        }
-                      }
-                    ]
-                  },
-                  "expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "RLS Combine"
-                        }
-                      },
-                      "Property": "#Has SPY"
-                    }
-                  },
-                  "howCreated": 1
-                },
-                {
-                  "name": "1d93fa66e00807b0e82c",
+                  "name": "2454c0da462d45650e54",
                   "type": "Advanced",
                   "expression": {
                     "Aggregation": {
@@ -1015,10 +1205,10 @@
                         "Column": {
                           "Expression": {
                             "SourceRef": {
-                              "Entity": "RLS Combine"
+                              "Entity": "Access"
                             }
                           },
-                          "Property": "UPN"
+                          "Property": "GID"
                         }
                       },
                       "Function": 2
@@ -1040,10 +1230,114 @@
                         "Column": {
                           "Expression": {
                             "SourceRef": {
-                              "Entity": "RLS Combine"
+                              "Entity": "Access"
                             }
                           },
-                          "Property": "UPN"
+                          "Property": "GID"
+                        }
+                      },
+                      "Function": 2
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "0c692b92e8b6c59c1d7c": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "e70d931d2c8126f524ce",
+                  "type": "Categorical",
+                  "filter": {
+                    "Version": 2,
+                    "From": [
+                      {
+                        "Name": "a",
+                        "Entity": "Access",
+                        "Type": 0
+                      }
+                    ],
+                    "Where": [
+                      {
+                        "Condition": {
+                          "In": {
+                            "Expressions": [
+                              {
+                                "Column": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Source": "a"
+                                    }
+                                  },
+                                  "Property": "#Type"
+                                }
+                              }
+                            ],
+                            "Values": [
+                              [
+                                {
+                                  "Literal": {
+                                    "Value": "'3. RLS Only'"
+                                  }
+                                }
+                              ]
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Access"
+                        }
+                      },
+                      "Property": "#Type"
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "026ff12539482c04d548",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "RLS Combine New"
+                            }
+                          },
+                          "Property": "#GID"
+                        }
+                      },
+                      "Function": 2
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "RLS Combine New"
+                            }
+                          },
+                          "Property": "#GID"
                         }
                       },
                       "Function": 2
@@ -1064,7 +1358,7 @@
               "expanded": {
                 "expr": {
                   "Literal": {
-                    "Value": "false"
+                    "Value": "true"
                   }
                 }
               },

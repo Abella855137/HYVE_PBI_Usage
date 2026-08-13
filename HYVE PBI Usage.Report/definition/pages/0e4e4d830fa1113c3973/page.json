@@ -8,17 +8,17 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "56697f2f7aba2f6adc75",
+        "name": "6bbe29606d40c8bf52d9",
         "field": {
           "HierarchyLevel": {
             "Expression": {
               "Hierarchy": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "RLS Combine"
+                    "Entity": "RLS Combine New"
                   }
                 },
-                "Hierarchy": "User Name Hierarchy"
+                "Hierarchy": "#User Name Additional Hierarchy"
               }
             },
             "Level": "#User Name Additional"
@@ -30,7 +30,7 @@
           "From": [
             {
               "Name": "r",
-              "Entity": "RLS Combine",
+              "Entity": "RLS Combine New",
               "Type": 0
             }
           ],
@@ -54,10 +54,65 @@
                     [
                       {
                         "Literal": {
-                          "Value": "'Frank Li'"
+                          "Value": "'Raymond Yue'"
                         }
                       }
                     ]
+                  ]
+                }
+              },
+              "Annotations": {
+                "filterExpressionMetadata": {
+                  "expressions": [
+                    {
+                      "HierarchyLevel": {
+                        "Expression": {
+                          "Hierarchy": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Entity": "RLS Combine New"
+                              }
+                            },
+                            "Hierarchy": "#User Name Additional Hierarchy"
+                          }
+                        },
+                        "Level": "#User Name Additional"
+                      }
+                    }
+                  ],
+                  "decomposedIdentities": {
+                    "values": [
+                      [
+                        {
+                          "0": [
+                            {
+                              "Literal": {
+                                "Value": "'Raymond Yue'"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    ],
+                    "columns": [
+                      {
+                        "value": {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Entity": "RLS Combine New"
+                              }
+                            },
+                            "Property": "#User Name Additional"
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "valueMap": [
+                    {
+                      "0": "Raymond Yue"
+                    }
                   ]
                 }
               }
@@ -73,18 +128,18 @@
     "type": "Drillthrough",
     "parameters": [
       {
-        "name": "037bb9d946418afab004",
-        "boundFilter": "56697f2f7aba2f6adc75",
+        "name": "01cbc70e37b536bcc99c",
+        "boundFilter": "6bbe29606d40c8bf52d9",
         "fieldExpr": {
           "HierarchyLevel": {
             "Expression": {
               "Hierarchy": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "RLS Combine"
+                    "Entity": "RLS Combine New"
                   }
                 },
-                "Hierarchy": "User Name Hierarchy"
+                "Hierarchy": "#User Name Additional Hierarchy"
               }
             },
             "Level": "#User Name Additional"

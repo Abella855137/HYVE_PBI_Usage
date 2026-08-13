@@ -5,7 +5,7 @@
     "x": 0,
     "y": 346,
     "z": 7000,
-    "height": 68,
+    "height": 339,
     "width": 191,
     "tabOrder": 7000
   },
@@ -17,28 +17,97 @@
           "projections": [
             {
               "field": {
-                "HierarchyLevel": {
+                "Column": {
                   "Expression": {
-                    "Hierarchy": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "RLS Combine"
-                        }
-                      },
-                      "Hierarchy": "Report Name Hierarchy"
+                    "SourceRef": {
+                      "Entity": "Access"
                     }
                   },
-                  "Level": "Report Name"
+                  "Property": "Work Space"
                 }
               },
-              "queryRef": "RLS Combine.Report Name Hierarchy.Report Name",
-              "nativeQueryRef": "Report Name Hierarchy Report Name",
+              "queryRef": "Access.Work Space",
+              "nativeQueryRef": "Work Space",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Access"
+                    }
+                  },
+                  "Property": "Report Name"
+                }
+              },
+              "queryRef": "Access.Report Name",
+              "nativeQueryRef": "Report Name",
               "active": true
             }
           ]
         }
       }
     },
+    "expansionStates": [
+      {
+        "roles": [
+          "Values"
+        ],
+        "levels": [
+          {
+            "queryRefs": [
+              "Access.Work Space"
+            ],
+            "isCollapsed": true,
+            "identityKeys": [
+              {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Access"
+                    }
+                  },
+                  "Property": "Work Space"
+                }
+              }
+            ],
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "Access.Report Name"
+            ],
+            "isCollapsed": true,
+            "isPinned": true
+          }
+        ],
+        "root": {
+          "children": [
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "'Hyve Accounting'"
+                  }
+                }
+              ],
+              "isToggled": true
+            },
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "'Hyve Corp'"
+                  }
+                }
+              ],
+              "isToggled": true
+            }
+          ]
+        }
+      }
+    ],
     "objects": {
       "data": [
         {
@@ -46,7 +115,7 @@
             "mode": {
               "expr": {
                 "Literal": {
-                  "Value": "'Dropdown'"
+                  "Value": "'Basic'"
                 }
               }
             }
@@ -90,13 +159,20 @@
                 }
               }
             },
+            "orientation": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
             "filter": {
               "filter": {
                 "Version": 2,
                 "From": [
                   {
-                    "Name": "r",
-                    "Entity": "RLS Combine",
+                    "Name": "a",
+                    "Entity": "Access",
                     "Type": 0
                   }
                 ],
@@ -109,7 +185,17 @@
                             "Column": {
                               "Expression": {
                                 "SourceRef": {
-                                  "Source": "r"
+                                  "Source": "a"
+                                }
+                              },
+                              "Property": "Work Space"
+                            }
+                          },
+                          {
+                            "Column": {
+                              "Expression": {
+                                "SourceRef": {
+                                  "Source": "a"
                                 }
                               },
                               "Property": "Report Name"
@@ -120,7 +206,12 @@
                           [
                             {
                               "Literal": {
-                                "Value": "'Hyve Global MPL'"
+                                "Value": "'Hyve Corp'"
+                              }
+                            },
+                            {
+                              "Literal": {
+                                "Value": "'Hyve Global B Report (bigdata-AzureBlob)'"
                               }
                             }
                           ]
@@ -131,18 +222,23 @@
                       "filterExpressionMetadata": {
                         "expressions": [
                           {
-                            "HierarchyLevel": {
+                            "Column": {
                               "Expression": {
-                                "Hierarchy": {
-                                  "Expression": {
-                                    "SourceRef": {
-                                      "Entity": "RLS Combine"
-                                    }
-                                  },
-                                  "Hierarchy": "Report Name Hierarchy"
+                                "SourceRef": {
+                                  "Entity": "Access"
                                 }
                               },
-                              "Level": "Report Name"
+                              "Property": "Work Space"
+                            }
+                          },
+                          {
+                            "Column": {
+                              "Expression": {
+                                "SourceRef": {
+                                  "Entity": "Access"
+                                }
+                              },
+                              "Property": "Report Name"
                             }
                           }
                         ],
@@ -153,7 +249,16 @@
                                 "0": [
                                   {
                                     "Literal": {
-                                      "Value": "'Hyve Global MPL'"
+                                      "Value": "'Hyve Corp'"
+                                    }
+                                  }
+                                ]
+                              },
+                              {
+                                "1": [
+                                  {
+                                    "Literal": {
+                                      "Value": "'Hyve Global B Report (bigdata-AzureBlob)'"
                                     }
                                   }
                                 ]
@@ -166,7 +271,19 @@
                                 "Column": {
                                   "Expression": {
                                     "SourceRef": {
-                                      "Entity": "RLS Combine"
+                                      "Entity": "Access"
+                                    }
+                                  },
+                                  "Property": "Work Space"
+                                }
+                              }
+                            },
+                            {
+                              "value": {
+                                "Column": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Entity": "Access"
                                     }
                                   },
                                   "Property": "Report Name"
@@ -177,7 +294,8 @@
                         },
                         "valueMap": [
                           {
-                            "0": "Hyve Global MPL"
+                            "0": "Hyve Corp",
+                            "1": "Hyve Global B Report (bigdata-AzureBlob)"
                           }
                         ]
                       }
@@ -212,6 +330,13 @@
                   "Value": "true"
                 }
               }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Report Name'"
+                }
+              }
             }
           }
         }
@@ -243,5 +368,81 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "c99b58795bf005043aec",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Access"
+              }
+            },
+            "Property": "Report Name"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "a",
+              "Entity": "Access",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "Not": {
+                  "Expression": {
+                    "In": {
+                      "Expressions": [
+                        {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "a"
+                              }
+                            },
+                            "Property": "Report Name"
+                          }
+                        }
+                      ],
+                      "Values": [
+                        [
+                          {
+                            "Literal": {
+                              "Value": "null"
+                            }
+                          }
+                        ]
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "objects": {
+          "general": [
+            {
+              "properties": {
+                "isInvertedSelectionMode": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "true"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
   }
 }

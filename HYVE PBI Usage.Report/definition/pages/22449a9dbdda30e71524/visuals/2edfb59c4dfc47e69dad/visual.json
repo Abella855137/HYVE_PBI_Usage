@@ -22,17 +22,17 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "RLS Combine"
+                          "Entity": "PBI Spy User Access"
                         }
                       },
-                      "Property": "UPN"
+                      "Property": "global_employee_id"
                     }
                   },
                   "Function": 2
                 }
               },
-              "queryRef": "Min(RLS Combine.UPN)",
-              "nativeQueryRef": "Count of UPN"
+              "queryRef": "Sum(PBI Spy User Access.global_employee_id)",
+              "nativeQueryRef": "Count of global_employee_id"
             }
           ]
         }
@@ -46,10 +46,10 @@
                   "Column": {
                     "Expression": {
                       "SourceRef": {
-                        "Entity": "RLS Combine"
+                        "Entity": "PBI Spy User Access"
                       }
                     },
-                    "Property": "UPN"
+                    "Property": "global_employee_id"
                   }
                 },
                 "Function": 2
@@ -181,15 +181,15 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "a8b3b9a901da839d0bee",
+        "name": "faa92a4ff73e2adc6957",
         "field": {
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "RLS Combine"
+                "Entity": "Access"
               }
             },
-            "Property": "#Has SPY"
+            "Property": "#Type"
           }
         },
         "type": "Categorical",
@@ -197,31 +197,36 @@
           "Version": 2,
           "From": [
             {
-              "Name": "r",
-              "Entity": "RLS Combine",
+              "Name": "a",
+              "Entity": "Access",
               "Type": 0
             }
           ],
           "Where": [
             {
               "Condition": {
-                "Comparison": {
-                  "ComparisonKind": 0,
-                  "Left": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Source": "r"
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "a"
+                          }
+                        },
+                        "Property": "#Type"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'1. SPY & RLS'"
                         }
-                      },
-                      "Property": "#Has SPY"
-                    }
-                  },
-                  "Right": {
-                    "Literal": {
-                      "Value": "'Y'"
-                    }
-                  }
+                      }
+                    ]
+                  ]
                 }
               }
             }

@@ -22,17 +22,17 @@
                     "Hierarchy": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "RLS Combine"
+                          "Entity": "RLS Combine New"
                         }
                       },
-                      "Hierarchy": "User Name Hierarchy"
+                      "Hierarchy": "#User Name Additional Hierarchy"
                     }
                   },
                   "Level": "#User Name Additional"
                 }
               },
-              "queryRef": "RLS Combine.User Name Hierarchy.#User Name Additional",
-              "nativeQueryRef": "User Name Hierarchy #User Name Additional"
+              "queryRef": "RLS Combine New.#User Name Additional Hierarchy.#User Name Additional",
+              "nativeQueryRef": "#User Name Additional Hierarchy #User Name Additional"
             },
             {
               "field": {
@@ -41,17 +41,17 @@
                     "Hierarchy": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "RLS Combine"
+                          "Entity": "RLS Combine New"
                         }
                       },
-                      "Hierarchy": "User Name Hierarchy"
+                      "Hierarchy": "#User Name Additional Hierarchy"
                     }
                   },
                   "Level": "Report Name"
                 }
               },
-              "queryRef": "RLS Combine.User Name Hierarchy.Report Name",
-              "nativeQueryRef": "User Name Hierarchy Report Name"
+              "queryRef": "RLS Combine New.#User Name Additional Hierarchy.Report Name",
+              "nativeQueryRef": "#User Name Additional Hierarchy Report Name"
             },
             {
               "field": {
@@ -60,17 +60,17 @@
                     "Hierarchy": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "RLS Combine"
+                          "Entity": "RLS Combine New"
                         }
                       },
-                      "Hierarchy": "User Name Hierarchy"
+                      "Hierarchy": "#User Name Additional Hierarchy"
                     }
                   },
                   "Level": "DNA Name"
                 }
               },
-              "queryRef": "RLS Combine.User Name Hierarchy.DNA Name",
-              "nativeQueryRef": "User Name Hierarchy DNA Name"
+              "queryRef": "RLS Combine New.#User Name Additional Hierarchy.DNA Name",
+              "nativeQueryRef": "#User Name Additional Hierarchy DNA Name"
             }
           ]
         }

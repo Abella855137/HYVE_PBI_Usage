@@ -17,17 +17,22 @@
           "projections": [
             {
               "field": {
-                "Measure": {
+                "Aggregation": {
                   "Expression": {
-                    "SourceRef": {
-                      "Entity": "User Access"
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Access"
+                        }
+                      },
+                      "Property": "GID"
                     }
                   },
-                  "Property": "~Total User"
+                  "Function": 2
                 }
               },
-              "queryRef": "User Access.~Total User",
-              "nativeQueryRef": "~Total User"
+              "queryRef": "CountNonNull(Access.GID)",
+              "nativeQueryRef": "Count of GID1"
             }
           ]
         }
@@ -36,13 +41,18 @@
         "sort": [
           {
             "field": {
-              "Measure": {
+              "Aggregation": {
                 "Expression": {
-                  "SourceRef": {
-                    "Entity": "User Access"
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "Access"
+                      }
+                    },
+                    "Property": "GID"
                   }
                 },
-                "Property": "~Total User"
+                "Function": 2
               }
             },
             "direction": "Descending"

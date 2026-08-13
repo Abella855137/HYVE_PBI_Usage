@@ -22,17 +22,17 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "RLS Combine"
+                          "Entity": "RLS Combine New"
                         }
                       },
-                      "Property": "UPN"
+                      "Property": "#GID"
                     }
                   },
                   "Function": 2
                 }
               },
-              "queryRef": "Min(RLS Combine.UPN)",
-              "nativeQueryRef": "Count of UPN"
+              "queryRef": "CountNonNull(RLS Combine New.#GID)",
+              "nativeQueryRef": "Count of #GID1"
             }
           ]
         }
@@ -46,10 +46,10 @@
                   "Column": {
                     "Expression": {
                       "SourceRef": {
-                        "Entity": "RLS Combine"
+                        "Entity": "RLS Combine New"
                       }
                     },
-                    "Property": "UPN"
+                    "Property": "#GID"
                   }
                 },
                 "Function": 2
@@ -181,15 +181,15 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "7b126f59b61222dbd853",
+        "name": "e70d931d2c8126f524ce",
         "field": {
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "RLS Combine"
+                "Entity": "Access"
               }
             },
-            "Property": "#Has SPY"
+            "Property": "#Type"
           }
         },
         "type": "Categorical",
@@ -197,8 +197,8 @@
           "Version": 2,
           "From": [
             {
-              "Name": "r",
-              "Entity": "RLS Combine",
+              "Name": "a",
+              "Entity": "Access",
               "Type": 0
             }
           ],
@@ -211,10 +211,10 @@
                       "Column": {
                         "Expression": {
                           "SourceRef": {
-                            "Source": "r"
+                            "Source": "a"
                           }
                         },
-                        "Property": "#Has SPY"
+                        "Property": "#Type"
                       }
                     }
                   ],
@@ -222,7 +222,7 @@
                     [
                       {
                         "Literal": {
-                          "Value": "'N'"
+                          "Value": "'3. RLS Only'"
                         }
                       }
                     ]

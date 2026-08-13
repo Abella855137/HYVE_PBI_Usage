@@ -38,16 +38,6 @@ relationship 8795b761-a13e-4617-8b39-64311ba5d104
 	fromColumn: 'PBI Spy User Access'.delete_datetime
 	toColumn: LocalDateTable_f30ebdc9-9d49-41b4-989c-a37da2d36df7.Date
 
-relationship a00124f4-fee9-46ca-92cd-c67ece4e950c
-	joinOnDateBehavior: datePartOnly
-	fromColumn: 'RLS Data'.'Entry Datetime'
-	toColumn: LocalDateTable_a4009110-576d-4a31-bcba-6881339c4111.Date
-
-relationship 90c06b2e-4ca4-4b75-a4af-a2bc02f7e55b
-	joinOnDateBehavior: datePartOnly
-	fromColumn: 'RLS Data'.'Update Datetime'
-	toColumn: LocalDateTable_2dc84de9-363d-47ed-abc3-6e1b67b23ec0.Date
-
 relationship 76de12de-37fd-4cd7-8013-e31a93fd0052
 	joinOnDateBehavior: datePartOnly
 	fromColumn: Date.Date
@@ -57,13 +47,11 @@ relationship 0561267d-d527-958d-940a-e36088d9456b
 	fromColumn: 'Usage Log'.#Date
 	toColumn: Date.Date
 
-relationship c52257d2-be56-2e83-dccb-d49ba7e41677
-	crossFilteringBehavior: bothDirections
-	fromCardinality: one
-	fromColumn: 'User Access'.UPN
-	toColumn: 'PBI Spy User Access'.email_address
+relationship eba235fa-716f-e37d-337b-536f3b6b07ad
+	fromColumn: 'PBI Spy User Access'.#Key1
+	toColumn: Access.#Key1
 
-relationship 76c1a060-67d9-b11c-72ef-ff1caad47760
-	fromColumn: 'RLS Combine'.UPN
-	toColumn: 'User Access'.UPN
+relationship 5a4ea705-ce86-17d5-bd11-a9bcd7a61142
+	fromColumn: 'RLS Combine New'.#Key1
+	toColumn: Access.#Key1
 

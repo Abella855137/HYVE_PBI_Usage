@@ -274,9 +274,9 @@ table 'PBI Spy User Access'
 			
 			IF(
 			    CONTAINS(
-			        'RLS Combine',
-			        'RLS Combine'[#User Name Additional],
-			        'PBI Spy User Access'[user_name]
+			        FILTER('RLS Combine New', 'RLS Combine New'[#Report Name Key] = 'PBI Spy User Access'[#Report Name Key]),
+			        'RLS Combine New'[#GID],
+			        'PBI Spy User Access'[global_employee_id]
 			    ),
 			    "Y", 
 			    "N"
@@ -293,6 +293,18 @@ table 'PBI Spy User Access'
 
 		annotation SummarizationSetBy = Automatic
 
+	column '#Report Name Key' = 'PBI Spy User Access'[workspace_name] &"-"& 'PBI Spy User Access'[report_name]
+		lineageTag: 255d13a5-6e75-4eb5-b0d4-da2a05de9024
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column #Key1 = 'PBI Spy User Access'[#Report Name Key] &"-"& 'PBI Spy User Access'[global_employee_id]
+		lineageTag: 22968e84-d499-43bb-9d28-e7d025e67e6a
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
 	partition 'PBI Spy User Access' = m
 		mode: import
 		source =
@@ -302,7 +314,7 @@ table 'PBI Spy User Access'
 				    #"4529f1ba-46ff-4c8b-9e0b-600287b1340b" = Workspaces{[workspaceId="4529f1ba-46ff-4c8b-9e0b-600287b1340b"]}[Data],
 				    #"0e7a08b2-fa24-4fc4-be60-86f57d5fcaf6" = #"4529f1ba-46ff-4c8b-9e0b-600287b1340b"{[dataflowId="0e7a08b2-fa24-4fc4-be60-86f57d5fcaf6"]}[Data],
 				    #"PBI Spy User Access_" = #"0e7a08b2-fa24-4fc4-be60-86f57d5fcaf6"{[entity="PBI Spy User Access",version=""]}[Data],
-				    #"Filtered Rows" = Table.SelectRows(#"PBI Spy User Access_", each ([workspace_name] = "Hyve Corp") and ([menu_title] = "Hyve Global MPL Report"))
+				    #"Filtered Rows" = Table.SelectRows(#"PBI Spy User Access_", each ([workspace_name] = "Hyve Accounting" or [workspace_name] = "Hyve Corp" or [workspace_name] = "Hyve Finance" or [workspace_name] = "Hyve Manufacturing" or [workspace_name] = "Hyve Purchasing"))
 				in
 				    #"Filtered Rows"
 

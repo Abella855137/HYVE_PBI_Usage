@@ -1,0 +1,66 @@
+table Access
+	lineageTag: 06c7fbcf-e8c0-481e-8426-f53623ac9de8
+
+	column #Type =
+			
+			VAR _SPY = LOOKUPVALUE('PBI Spy User Access'[~Has RLS], 'PBI Spy User Access'[#Key1], Access[#Key1])
+			VAR _RLS = LOOKUPVALUE('RLS Combine New'[#Has SPY], 'RLS Combine New'[#Key1], Access[#Key1])
+			VAR _Result = SWITCH(
+			                TRUE(),
+			                _RLS = "Y" || _SPY = "Y", "1. SPY & RLS",
+			                _SPY = "N", "2. SPY Only",
+			                _RLS = "N", "3. RLS Only",
+			                "4. None")
+			RETURN _Result
+		lineageTag: 0567ad5f-910b-4391-ba1b-280f872fac9e
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column #Key1 = Access[Key] &"-"& Access[GID]
+		lineageTag: 66c1367a-5b06-4721-b50e-c43c1971ec53
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Work Space'
+		lineageTag: c0f923b9-a035-4bd4-9278-02da7ca4c5b1
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Work Space]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Report Name'
+		lineageTag: fd9f13e1-7c22-448c-b255-07074c80c5f2
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Report Name]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Key = Access[Work Space] &"-"& Access[Report Name]
+		lineageTag: b95a34cf-6885-4818-8a24-0fa1173d6957
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column GID
+		formatString: 0
+		lineageTag: e8452997-92dd-4d26-8865-033fc5dfe2db
+		summarizeBy: count
+		isNameInferred
+		sourceColumn: [GID]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Access = calculated
+		mode: import
+		source = ```
+				DISTINCT(UNION(
+				    SELECTCOLUMNS( FILTER('PBI Spy User Access', 'PBI Spy User Access'[global_employee_id]<>BLANK()),"Work Space", 'PBI Spy User Access'[workspace_name], "Report Name", 'PBI Spy User Access'[report_name], "GID", 'PBI Spy User Access'[global_employee_id]), 
+				    SELECTCOLUMNS( FILTER('RLS Combine New', 'RLS Combine New'[#GID]<>BLANK()), "Work Space", 'RLS Combine New'[Work Space], "Report Name", 'RLS Combine New'[Report Name], "GID", 'RLS Combine New'[#GID])))
+				```
+
+	annotation PBI_Id = 061f4299b9b44a8581151bd34f3526c9
+

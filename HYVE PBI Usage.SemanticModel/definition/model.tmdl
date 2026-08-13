@@ -6,7 +6,7 @@ model Model
 		legacyRedirects
 		returnErrorValuesAsNull
 
-annotation PBI_QueryOrder = ["Usage Log","Employee Info","PBI Spy User Access","RLS Data","Glossary","RLS Combine"]
+annotation PBI_QueryOrder = ["Usage Log","Employee Info","PBI Spy User Access","Glossary","RLS Combine New"]
 
 annotation __PBI_TimeIntelligenceEnabled = 1
 
@@ -25,15 +25,11 @@ ref table LocalDateTable_317da7e3-f826-427d-9d44-8cfd1e926860
 ref table LocalDateTable_0246d634-8df5-4b72-b9a8-daa1fa70417f
 ref table LocalDateTable_f30ebdc9-9d49-41b4-989c-a37da2d36df7
 ref table Date
-ref table 'RLS Data'
-ref table LocalDateTable_a4009110-576d-4a31-bcba-6881339c4111
-ref table LocalDateTable_2dc84de9-363d-47ed-abc3-6e1b67b23ec0
 ref table Glossary
-ref table 'User Access'
-ref table RecencyRange
 ref table LocalDateTable_5ed9f288-806c-4693-b08a-2b4576d34580
-ref table 'RLS Combine'
-ref table 'RLS Only'
+ref table Key
+ref table Access
+ref table 'RLS Combine New'
 
 ref cultureInfo en-US
 

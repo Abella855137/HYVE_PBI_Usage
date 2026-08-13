@@ -1,0 +1,134 @@
+table 'RLS Combine New'
+	lineageTag: a6e9012e-edf2-40dc-a711-3b441af7d86c
+
+	column 'Work Space'
+		dataType: string
+		lineageTag: 31df3335-4f21-48fd-9851-b5013f567779
+		summarizeBy: none
+		sourceColumn: Work Space
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Report Name'
+		dataType: string
+		lineageTag: fd5576f7-a7d5-4068-8e27-263c7a3609bb
+		summarizeBy: none
+		sourceColumn: Report Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'DNA Name'
+		dataType: string
+		lineageTag: 64d8a602-f6d9-4761-b8a7-986eae33bfd6
+		summarizeBy: none
+		sourceColumn: DNA Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'User Name'
+		dataType: string
+		lineageTag: c9b7542a-d827-4b31-90d0-6994fed7c5cf
+		summarizeBy: none
+		sourceColumn: User Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column UPN
+		dataType: string
+		lineageTag: 5cdf2c02-2380-446e-975f-7a56e2e4d559
+		summarizeBy: none
+		sourceColumn: UPN
+
+		annotation SummarizationSetBy = Automatic
+
+	column Active
+		dataType: string
+		lineageTag: 0b4d70ef-709d-4dfa-a154-9bab408dc214
+		summarizeBy: none
+		sourceColumn: Active
+
+		annotation SummarizationSetBy = Automatic
+
+	column #GID = ```
+			
+			VAR C_NOW = LOOKUPVALUE('Employee Info'[Employee Global ID],'Employee Info'[userPrincipalName],'RLS Combine New'[UPN])
+			VAR C_TD = LOOKUPVALUE('Employee Info'[Employee Global ID],'Employee Info'[tdsnx_upn],'RLS Combine New'[UPN])
+			VAR C_LTD = LOOKUPVALUE('Employee Info'[Employee Global ID],'Employee Info'[ltd_upn],'RLS Combine New'[UPN])
+			VAR C_Email = LOOKUPVALUE('Employee Info'[Employee Global ID], 'Employee Info'[ltd_email], 'RLS Combine New'[UPN])
+			VAR RESULT = 
+			SWITCH(
+			    TRUE(),
+			    C_NOW <> BLANK(), C_NOW,
+			    C_TD  <> BLANK(), C_TD,
+			    C_LTD <> BLANK(), C_LTD,
+			    C_Email <> BLANK(), C_Email
+			)
+			RETURN RESULT
+			```
+		formatString: 0
+		lineageTag: 8567bef6-50dc-4620-a28d-de7209d01dcb
+		summarizeBy: count
+
+		annotation SummarizationSetBy = Automatic
+
+	column #Key1 = 'RLS Combine New'[#Report Name Key] &"-"& 'RLS Combine New'[#GID]
+		lineageTag: 23f2e9db-b971-47bf-9912-db73db9ef793
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column '#Report Name Key' = 'RLS Combine New'[Work Space] &"-"& 'RLS Combine New'[Report Name]
+		lineageTag: 1acb40f8-290b-4290-8678-2462350f327c
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column '#Has SPY' = ```
+			
+			IF(
+			    CONTAINS(
+			        FILTER('PBI Spy User Access', 'RLS Combine New'[#Report Name Key] = 'PBI Spy User Access'[#Report Name Key]),
+			        'PBI Spy User Access'[global_employee_id],
+			        'RLS Combine New'[#GID]
+			    ),
+			    "Y", 
+			    "N"
+			)
+			```
+		lineageTag: ed25c3ea-3181-424a-b0f7-f46aaa6df2dc
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column '#User Name Additional' = LOOKUPVALUE('Employee Info'[Name],'Employee Info'[Employee Global ID],'RLS Combine New'[#GID])
+		lineageTag: 5ddd511b-0caf-435e-b873-fec417256539
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	hierarchy '#User Name Additional Hierarchy'
+		lineageTag: d67ce246-7973-42d5-a948-b65bb2372e46
+
+		level '#User Name Additional'
+			lineageTag: c8f01a9d-9e4b-44bc-adb7-ef6231c7c475
+			column: '#User Name Additional'
+
+		level 'Report Name'
+			lineageTag: 14a6b6ff-d2f1-4f24-83e6-7dc3dea5eb4c
+			column: 'Report Name'
+
+		level 'DNA Name'
+			lineageTag: 8973e2c7-3c6d-4dd8-9129-8dcd45fe6a1c
+			column: 'DNA Name'
+
+	partition 'RLS Combine New' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("7Zptb9s2EMe/CuFX3VALjh/jd/Wz09m1KylJ06IYzhJtMZZIl5Scyp9+pCLHq5sVQ6vTOqBAEJCUfT+TvDv+RfLDh8o03VMyB56swYsTyfim8rIyCcUKQjIfT8iSyrWQEXCPkiGoYCVA+vojY0kjwWNdGgoOoU9s5gW65rYbnWa39vZV7KuUc/rZ8kSk2+8qH19+P23RLwnk0lC3+yXRbpPPrCTUAKQSvCTYyTkmjAOxkw1wltfsV0X7BTLj5BLIoNwbkClPjoDMOfnADQTMJzcQA+cMdEPcvby4rDUPCDliEEimdPOehYbkmaoPexx/KAGW+0QJpNN8lTqGPe6n2oJSNDWeUa+12u3OGsEzygCduuXE4FHN83o+GLtuvd7sNDpjlPXjNV2vybskw7TqzXp3gjF+uiNkEAhDaXSbF92LP5BWKHTSY3/MA1+QuXZ6qrKlsNntXDTeoiTbJcSSeVsyTWSYOaDbumw1Li6XCD1bRCDJUijws2Tb6LYvW200T59rIQE0JAOIWBhSaRzS7dRqjXbX+QZzIOROt2TlnNcnNt0JGZMXK7bx9XJR7R0SSfv66W/moz2nal9Npm51Ma7ao+XCdqvuojof6Wf6TzGdvg5fTt6bH+H9ntuN6Z6yV4H+ohJhEjPBVRHduV0shnfkzS2ZLRZO3oeIbakVeZ4ece0sWMzFfFgmzhnZNyO7/G46y549cnuDa6ccau4vsQhkYm3hARRsWaERkBNkCjxA+/0QAl+hWd9omSmLt/5vcoN1CIBvMCbEhwe+RhsyFQi6siCIqF88w3HtnjuaXA3+7F/f5TyQEIRo3VlL4FsrRIkMn+o3DGXtRLjFMP+khLHGJmRhankgMH58oFdnK6AYprXHbJmK0IblXk+rHpdAJJhBloSMe2gArclUAHoKHlgcY0zCfaJixj/9H9e1/zZ7IwbGjsZUWjtIy5KPmRRHWIpy4TiclwQ6KVRk0LW7XDhuOTC7N3dGDpne9e2rkvqXI5fXdkku8pzYRyZ+JfOxeHlQ0z08JqM6GsIofE/gmQcvoCHCWvdsUoI4LlrunWcJNMQz7ozHOndkNNKvCfppJyiP0JVkwK1YRCu8LKCtWzsjfthOIcpePUafGYq68gTnQloRnBv/oW2/L8To5GrYqtW6F53q9Go2mz5yHyj3U+sBSY7es5DSclKzhFQra99Kk2Ln5yz6cTFfZwBk3lkWwKIdM4FYWfdC+sDRYnT3eDZhhQJhm/u0i77TmolRawPSY4CnnZQndMrZQ7IJEIbsuTC6Fz6zgoJ3bc5iCJHxdQBhws6iBxH1a5J+6kka2NfOlDhz98skFGQHpMUH7uhmVB5s4U71ZJWGyzPfQVArBUTBSH3rnhnZg6YWaciUAsssFWiQAJh+vbZUgofIFSLl9UJD5pnDGk8kMuY0tWKJOGSZilcBW0vGv9GjMePmooAJ7kTF2rIn9lSmpMchTBVT5MVAhCH1tCMdjfdC4KSfxLH+XF7t/+MFjO+wP2NhSgYg8uKgSNtOIJIZ42QQJOaixdMRQoEIW3uqnjbznqPyqieKBBxvb4wp46fquEhETz9QQGY0uxlS67TbtU6/WC96nZ19kLdJdtfmeBJS5DDpACDvmPmO22m1m92mW2wPXBGRZf4yXsnezXdBkR1YmpMIsoT0WF4WGglHdU9s4Uu2Sehhksn8vz+zHpsK5WYHj2ROt4FZmCqno8hiIRCQWRYfWXlWpPU3D5CSOwq7vHxXpPG+2UYirtlGOtbcQtNTtpFMBjrtxVnoPTYUmmWHxndCMmQ0PlTMXQtT9YskvKaSRqlZHSNGpQnGZuuy1WrMig3x9+bMgIz2Jij0f+v9N88QPv4F", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"Work Space" = _t, #"Report Name" = _t, #"DNA Name" = _t, #"User Name" = _t, UPN = _t, Active = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Work Space", type text}, {"Report Name", type text}, {"DNA Name", type text}, {"User Name", type text}, {"UPN", type text}, {"Active", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
