@@ -1,10 +1,12 @@
 table 'PBI Spy User Access'
 	lineageTag: 801fe44b-b17b-4885-8627-fdc29a7abfa0
 
+	/// Count of SPY users that do not have matching RLS access.
 	measure '~Flag SPY Users' = CALCULATE(DISTINCTCOUNT('PBI Spy User Access'[user_name]),'PBI Spy User Access'[~Has RLS] = "N")
 		formatString: 0
 		lineageTag: 24c26bf5-8a22-4870-9135-02ac8012c244
 
+	/// Share of SPY users missing RLS access relative to the full SPY population.
 	measure '~Flag SPY Users Ratio' = DIVIDE([~Flag SPY Users], COUNT('PBI Spy User Access'[user_name]))
 		lineageTag: de98fecd-3ed7-41cf-99ca-8835e8e934b6
 
@@ -270,6 +272,7 @@ table 'PBI Spy User Access'
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Flag showing whether each SPY user has a matching RLS permission for the same report key.
 	column '~Has RLS' = ```
 			
 			IF(
@@ -287,24 +290,28 @@ table 'PBI Spy User Access'
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Employee UPN resolved from the matching employee global ID.
 	column 'SPY UPN' = LOOKUPVALUE('Employee Info'[userPrincipalName], 'Employee Info'[Employee Global ID], 'PBI Spy User Access'[global_employee_id])
 		lineageTag: 4646dc38-bdf7-4934-9d0f-95a894b005ea
 		summarizeBy: none
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Combined workspace and normalized report name used as a join key.
 	column '#Report Name Key' = 'PBI Spy User Access'[workspace_name] &"-"& 'PBI Spy User Access'[#Report Name Revise]
 		lineageTag: 255d13a5-6e75-4eb5-b0d4-da2a05de9024
 		summarizeBy: none
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Unique SPY key combining the report key and employee ID.
 	column #Key1 = 'PBI Spy User Access'[#Report Name Key] &"-"& 'PBI Spy User Access'[global_employee_id]
 		lineageTag: 22968e84-d499-43bb-9d28-e7d025e67e6a
 		summarizeBy: none
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Normalized report name used to align legacy and revised report naming.
 	column '#Report Name Revise' = IF('PBI Spy User Access'[report_name] = "Hyve Global B Report (bigdata-AzureBlob)", "Hyve Global MPL Usage Analysis", 'PBI Spy User Access'[report_name])
 		lineageTag: 129df7fa-1635-4eaf-bbd2-dee5fffa3ee9
 		summarizeBy: none

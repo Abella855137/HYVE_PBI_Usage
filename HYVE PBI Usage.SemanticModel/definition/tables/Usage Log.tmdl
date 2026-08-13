@@ -1,43 +1,53 @@
 table 'Usage Log'
 	lineageTag: c9c9ad04-022c-4c95-a33f-5d8e468656ac
 
+	/// Total number of usage records in the current filter context.
 	measure '~Total Operation' = COUNTROWS('Usage Log')
 		formatString: 0
 		lineageTag: 464a036c-d93e-4794-8dae-dd0f562b380e
 
+	/// Running total of all operations from the earliest date through the current date in the selected time context.
 	measure '~Accumulative Operation' = CALCULATE([~Total Operation],FILTER(ALL('Date'),'Date'[Date]<=MAX('Date'[Date])))
 		formatString: 0
 		lineageTag: 3a7767fe-4e2c-4f83-b340-743867f113b5
 
+	/// Total number of usage events classified as downloads.
 	measure '~Download Count' = CALCULATE(COUNTROWS('Usage Log'),'Usage Log'[#Operation Group] = "Download")
 		formatString: 0
 		lineageTag: 4d3b14d9-0cbf-4b13-b978-dad9e7a5decf
 
+	/// Total number of usage events classified as views.
 	measure '~View Count' = CALCULATE(COUNTROWS('Usage Log'),'Usage Log'[#Operation Group] = "View")
 		formatString: 0
 		lineageTag: d2624975-4a09-437b-b018-0a9440527bb1
 
+	/// Total number of usage events classified as prints.
 	measure '~Print Count' = CALCULATE(COUNTROWS('Usage Log'),'Usage Log'[#Operation Group] = "Print")
 		formatString: 0
 		lineageTag: 30db9dff-7a1e-4b8c-8962-89a465e7d7e7
 
+	/// Total number of usage events classified as shares.
 	measure '~Share Count' = CALCULATE(COUNTROWS('Usage Log'),'Usage Log'[#Operation Group] = "Share")
 		formatString: 0
 		lineageTag: 434052d1-cc5d-4eb7-ab33-af84b1a600e5
 
+	/// Total number of usage events classified as exports.
 	measure '~Export Count' = CALCULATE(COUNTROWS('Usage Log'),'Usage Log'[#Operation Group] = "Export")
 		formatString: 0
 		lineageTag: a8f65851-831a-4dba-9f28-ef20aae4daf6
 
+	/// Number of days from the first recorded usage to the latest recorded usage, inclusive.
 	measure '~Deployed Days' = DATEDIFF(MIN('Usage Log'[create_datetime]),MAX('Usage Log'[create_datetime]),DAY)+1
 		formatString: 0
 		lineageTag: a2ab59dd-3e99-4bec-9592-d8cbf8ace986
 
+	/// Average number of usage operations per day across the selected date range.
 	measure ~View/Day = DIVIDE([~Total Operation],[~Deployed Days])
 		lineageTag: 3c9de581-9439-4b23-bc72-b963ffc96661
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// Number of distinct months in which a user has activity.
 	measure ~ActiveMonths = ```
 			
 			    CALCULATE(
@@ -48,6 +58,7 @@ table 'Usage Log'
 		formatString: 0
 		lineageTag: c7841e94-ef65-44db-8368-0c79fb8d561a
 
+	/// Indicator showing whether the current user is in the core development list.
 	measure ~CF = ```
 			
 			VAR IsDevList = {"Wendy Wang", "Matt Xie", "Abella Xu"} 
@@ -63,11 +74,13 @@ table 'Usage Log'
 		formatString: 0
 		lineageTag: d9768186-9527-4f22-a62b-2ab8672a2a23
 
+	/// Placeholder measure for custom report logic or manual use.
 	measure Measure
 		lineageTag: b1e87a82-574d-4cfe-a492-a5493d7d2e7d
 
 		annotation 43dbc3e8-3a1c-4b6f-9923-b49ff7d6691c = True
 
+	/// Total number of calendar months between a user's first and last recorded activity.
 	measure ~Duration =
 			
 			VAR First_Login = CALCULATE(MIN('Usage Log'[create_datetime]), ALLEXCEPT('Usage Log','Usage Log'[#User Name], 'Usage Log'[user_email]))
@@ -373,6 +386,7 @@ table 'Usage Log'
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Date value extracted from the creation timestamp for time-based analysis.
 	column #Date = 'Usage Log'[create_datetime].[Date]
 		formatString: General Date
 		lineageTag: cb12bf03-8280-49ce-a2f6-e5d7f0339649
@@ -380,12 +394,14 @@ table 'Usage Log'
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Normalized environment source: Cloud or CIS based on the env_type field.
 	column #Source = IF('Usage Log'[env_type] = "MS Cloud","Cloud","CIS")
 		lineageTag: a3446c9f-3f0c-4c9c-8ebf-e44359d9be82
 		summarizeBy: none
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Resolved employee name for each usage row, using the employee lookup and fallback rules.
 	column '#User Name' = ```
 			
 			VAR CIS_GID = LOOKUPVALUE('Employee Info'[Name],'Employee Info'[Employee Global ID],'Usage Log'[globalid])
@@ -408,6 +424,7 @@ table 'Usage Log'
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Grouped action type such as Download, View, Print, Share, Export, or Other Operations.
 	column '#Operation Group' =
 			
 			IF(SEARCH("*Download*",'Usage Log'[Operation],1,0),"Download",
@@ -420,18 +437,21 @@ table 'Usage Log'
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Month label in YYYY-MM format for monthly aggregation.
 	column '#Operation Month' = FORMAT('Usage Log'[create_datetime], "YYYY-MM")
 		lineageTag: b153e820-3cf0-4e95-a45e-8f338bfe20d5
 		summarizeBy: none
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Flag indicating when a usage record could not be matched to a valid employee name.
 	column '#Account/Name Mapping Failed' = IF('Usage Log'[#User Name] = "Others", IF('Usage Log'[globalid] <> BLANK(), "Resigned", "UPN changed and no matching"))
 		lineageTag: 1de6f982-ab30-4647-8201-01507072404b
 		summarizeBy: none
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Number of calendar months between each user's first and most recent activity.
 	column #Duration =
 			
 			VAR First_Login = CALCULATE(MIN('Usage Log'[create_datetime]), ALLEXCEPT('Usage Log','Usage Log'[#User Name], 'Usage Log'[user_email]))
@@ -444,6 +464,7 @@ table 'Usage Log'
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Time-in-system bucket based on each user's duration of activity.
 	column '#Duration Group' =
 			
 			SWITCH(
@@ -458,6 +479,7 @@ table 'Usage Log'
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Recency bucket showing how recently each user has been active.
 	column '#Recency Group' =
 			
 			SWITCH(
@@ -471,6 +493,7 @@ table 'Usage Log'
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Number of days since each user's most recent activity.
 	column #Recency =
 			
 			VAR Last_Login = CALCULATE(MAX('Usage Log'[create_datetime]), ALLEXCEPT('Usage Log', 'Usage Log'[#User Name], 'Usage Log'[user_email]))
@@ -485,6 +508,7 @@ table 'Usage Log'
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Number of operations within the last 30 days for each user.
 	column '#Operation within 30 days' = ```
 			
 			CALCULATE(
