@@ -49,7 +49,6 @@ table 'RLS Combine New'
 
 		annotation SummarizationSetBy = Automatic
 
-	/// Employee Global ID resolved from the best matching UPN or email lookup.
 	column #GID = ```
 			
 			VAR C_NOW = LOOKUPVALUE('Employee Info'[Employee Global ID],'Employee Info'[userPrincipalName],'RLS Combine New'[UPN])
@@ -72,24 +71,18 @@ table 'RLS Combine New'
 
 		annotation SummarizationSetBy = Automatic
 
-	/// Unique RLS key combining the report key and employee GID.
 	column #Key1 = 'RLS Combine New'[#Report Name Key] &"-"& 'RLS Combine New'[#GID]
 		lineageTag: 23f2e9db-b971-47bf-9912-db73db9ef793
 		summarizeBy: none
 
 		annotation SummarizationSetBy = Automatic
 
-<<<<<<< HEAD
-	/// Combined workspace and normalized report name used to reconcile access data.
-=======
->>>>>>> main
 	column '#Report Name Key' = 'RLS Combine New'[Work Space] &"-"& 'RLS Combine New'[#Report Name Revise]
 		lineageTag: 1acb40f8-290b-4290-8678-2462350f327c
 		summarizeBy: none
 
 		annotation SummarizationSetBy = Automatic
 
-	/// Flag showing whether the same GID exists in SPY access for the matching report key.
 	column '#Has SPY' = ```
 			
 			IF(
@@ -107,17 +100,12 @@ table 'RLS Combine New'
 
 		annotation SummarizationSetBy = Automatic
 
-	/// Employee display name matched back from the resolved GID.
 	column '#User Name Additional' = LOOKUPVALUE('Employee Info'[Name],'Employee Info'[Employee Global ID],'RLS Combine New'[#GID])
 		lineageTag: 5ddd511b-0caf-435e-b873-fec417256539
 		summarizeBy: none
 
 		annotation SummarizationSetBy = Automatic
 
-<<<<<<< HEAD
-	/// Normalized report name used to align legacy and revised report naming.
-=======
->>>>>>> main
 	column '#Report Name Revise' = IF('RLS Combine New'[Report Name] = "Hyve Global B Report (bigdata-AzureBlob)", "Hyve Global MPL Usage Analysis", 'RLS Combine New'[Report Name])
 		lineageTag: 057ae3c5-f2bc-4dc5-949e-c99940812d7f
 		summarizeBy: none

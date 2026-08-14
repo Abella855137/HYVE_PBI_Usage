@@ -1,7 +1,6 @@
 table Date
 	lineageTag: b4aeb273-8c8e-4427-afae-04df8c832fcb
 
-	/// Current date used as the report refresh timestamp.
 	measure 'Refresh Date' = TODAY()
 		formatString: Short Date
 		lineageTag: 8a9dd7ed-9ad4-46b2-b810-3825936965de
@@ -20,7 +19,6 @@ table Date
 
 		annotation SummarizationSetBy = Automatic
 
-	/// Month number derived from the calendar date.
 	column month_CY = MONTH([Date])
 		formatString: 0
 		lineageTag: d0d01625-ad18-42c4-9c22-df6ab0d71dfa
@@ -28,7 +26,6 @@ table Date
 
 		annotation SummarizationSetBy = Automatic
 
-	/// Fiscal quarter bucket derived from the month number.
 	column FY_Q =
 			
 			IF([month_CY]=12 ||[month_CY]=1|| [month_CY]=2,"Q1",
@@ -39,7 +36,6 @@ table Date
 
 		annotation SummarizationSetBy = Automatic
 
-	/// Fiscal year derived from the date, rolling December into the next year.
 	column FY_Year =
 			
 			IF(MONTH([Date])=12,YEAR([Date])+1,YEAR([Date]))
@@ -49,14 +45,12 @@ table Date
 
 		annotation SummarizationSetBy = Automatic
 
-	/// Month label in yyyy-MMM format for reporting and trend analysis.
 	column YearMonth = FORMAT('Date'[Date].[Date], "yyyy-MMM")
 		lineageTag: b95b6386-7d9b-41de-a033-790bbb97e88a
 		summarizeBy: none
 
 		annotation SummarizationSetBy = Automatic
 
-	/// Combined fiscal year and quarter label used for period grouping.
 	column YearQuarter = 'Date'[FY_Year] & 'Date'[FY_Q]
 		lineageTag: 08841b1d-ca40-4ec8-a43d-822cce3b87f6
 		summarizeBy: none

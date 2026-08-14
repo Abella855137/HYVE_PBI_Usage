@@ -1,7 +1,6 @@
 table Access
 	lineageTag: 06c7fbcf-e8c0-481e-8426-f53623ac9de8
 
-	/// Access type classification based on whether SPY and RLS permissions are present.
 	column #Type =
 			
 			VAR _SPY = LOOKUPVALUE('PBI Spy User Access'[~Has RLS], 'PBI Spy User Access'[#Key1], Access[#Key1])
@@ -18,7 +17,6 @@ table Access
 
 		annotation SummarizationSetBy = Automatic
 
-	/// Unique access key built from the workspace/report key and employee GID.
 	column #Key1 = Access[Key] &"-"& Access[GID]
 		lineageTag: 66c1367a-5b06-4721-b50e-c43c1971ec53
 		summarizeBy: none
@@ -41,7 +39,6 @@ table Access
 
 		annotation SummarizationSetBy = Automatic
 
-	/// Combined workspace and report key used to match access records.
 	column Key = Access[Work Space] &"-"& Access[Report Name]
 		lineageTag: b95a34cf-6885-4818-8a24-0fa1173d6957
 		summarizeBy: none

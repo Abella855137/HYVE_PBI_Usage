@@ -10,7 +10,7 @@ annotation PBI_QueryOrder = ["Usage Log","Employee Info","PBI Spy User Access","
 
 annotation __PBI_TimeIntelligenceEnabled = 1
 
-annotation PBI_ProTooling = ["DevMode","TMDL-Extension"]
+annotation PBI_ProTooling = ["DevMode"]
 
 ref table 'Usage Log'
 ref table DateTableTemplate_408c546c-792b-469d-b95e-28a17708128f
@@ -31,7 +31,6 @@ ref table Key
 ref table Access
 ref table 'RLS Combine New'
 ref table Parameter
-ref table 'Glossary New'
 
 ref cultureInfo en-US
 
