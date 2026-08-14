@@ -41,7 +41,10 @@ table 'Usage Log'
 		formatString: 0
 		lineageTag: a2ab59dd-3e99-4bec-9592-d8cbf8ace986
 
+<<<<<<< HEAD
 	/// Average number of usage operations per day across the selected date range.
+=======
+>>>>>>> main
 	measure ~View/Day = DIVIDE([~Total Operation],[~Deployed Days])
 		lineageTag: 3c9de581-9439-4b23-bc72-b963ffc96661
 
@@ -58,7 +61,10 @@ table 'Usage Log'
 		formatString: 0
 		lineageTag: c7841e94-ef65-44db-8368-0c79fb8d561a
 
+<<<<<<< HEAD
 	/// Indicator showing whether the current user is in the core development list.
+=======
+>>>>>>> main
 	measure ~CF = ```
 			
 			VAR IsDevList = {"Wendy Wang", "Matt Xie", "Abella Xu"} 
@@ -74,13 +80,19 @@ table 'Usage Log'
 		formatString: 0
 		lineageTag: d9768186-9527-4f22-a62b-2ab8672a2a23
 
+<<<<<<< HEAD
 	/// Placeholder measure for custom report logic or manual use.
+=======
+>>>>>>> main
 	measure Measure
 		lineageTag: b1e87a82-574d-4cfe-a492-a5493d7d2e7d
 
 		annotation 43dbc3e8-3a1c-4b6f-9923-b49ff7d6691c = True
 
+<<<<<<< HEAD
 	/// Total number of calendar months between a user's first and last recorded activity.
+=======
+>>>>>>> main
 	measure ~Duration =
 			
 			VAR First_Login = CALCULATE(MIN('Usage Log'[create_datetime]), ALLEXCEPT('Usage Log','Usage Log'[#User Name], 'Usage Log'[user_email]))
@@ -437,7 +449,10 @@ table 'Usage Log'
 
 		annotation SummarizationSetBy = Automatic
 
+<<<<<<< HEAD
 	/// Month label in YYYY-MM format for monthly aggregation.
+=======
+>>>>>>> main
 	column '#Operation Month' = FORMAT('Usage Log'[create_datetime], "YYYY-MM")
 		lineageTag: b153e820-3cf0-4e95-a45e-8f338bfe20d5
 		summarizeBy: none
@@ -451,7 +466,10 @@ table 'Usage Log'
 
 		annotation SummarizationSetBy = Automatic
 
+<<<<<<< HEAD
 	/// Number of calendar months between each user's first and most recent activity.
+=======
+>>>>>>> main
 	column #Duration =
 			
 			VAR First_Login = CALCULATE(MIN('Usage Log'[create_datetime]), ALLEXCEPT('Usage Log','Usage Log'[#User Name], 'Usage Log'[user_email]))
@@ -464,7 +482,10 @@ table 'Usage Log'
 
 		annotation SummarizationSetBy = Automatic
 
+<<<<<<< HEAD
 	/// Time-in-system bucket based on each user's duration of activity.
+=======
+>>>>>>> main
 	column '#Duration Group' =
 			
 			SWITCH(
@@ -479,7 +500,10 @@ table 'Usage Log'
 
 		annotation SummarizationSetBy = Automatic
 
+<<<<<<< HEAD
 	/// Recency bucket showing how recently each user has been active.
+=======
+>>>>>>> main
 	column '#Recency Group' =
 			
 			SWITCH(
@@ -493,7 +517,10 @@ table 'Usage Log'
 
 		annotation SummarizationSetBy = Automatic
 
+<<<<<<< HEAD
 	/// Number of days since each user's most recent activity.
+=======
+>>>>>>> main
 	column #Recency =
 			
 			VAR Last_Login = CALCULATE(MAX('Usage Log'[create_datetime]), ALLEXCEPT('Usage Log', 'Usage Log'[#User Name], 'Usage Log'[user_email]))
@@ -508,7 +535,10 @@ table 'Usage Log'
 
 		annotation SummarizationSetBy = Automatic
 
+<<<<<<< HEAD
 	/// Number of operations within the last 30 days for each user.
+=======
+>>>>>>> main
 	column '#Operation within 30 days' = ```
 			
 			CALCULATE(

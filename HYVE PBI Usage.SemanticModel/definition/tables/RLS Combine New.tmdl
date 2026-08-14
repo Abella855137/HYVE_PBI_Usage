@@ -79,7 +79,10 @@ table 'RLS Combine New'
 
 		annotation SummarizationSetBy = Automatic
 
+<<<<<<< HEAD
 	/// Combined workspace and normalized report name used to reconcile access data.
+=======
+>>>>>>> main
 	column '#Report Name Key' = 'RLS Combine New'[Work Space] &"-"& 'RLS Combine New'[#Report Name Revise]
 		lineageTag: 1acb40f8-290b-4290-8678-2462350f327c
 		summarizeBy: none
@@ -111,7 +114,10 @@ table 'RLS Combine New'
 
 		annotation SummarizationSetBy = Automatic
 
+<<<<<<< HEAD
 	/// Normalized report name used to align legacy and revised report naming.
+=======
+>>>>>>> main
 	column '#Report Name Revise' = IF('RLS Combine New'[Report Name] = "Hyve Global B Report (bigdata-AzureBlob)", "Hyve Global MPL Usage Analysis", 'RLS Combine New'[Report Name])
 		lineageTag: 057ae3c5-f2bc-4dc5-949e-c99940812d7f
 		summarizeBy: none
