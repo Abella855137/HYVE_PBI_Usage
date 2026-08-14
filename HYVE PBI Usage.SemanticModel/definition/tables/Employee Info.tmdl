@@ -138,6 +138,7 @@ table 'Employee Info'
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Flag indicating whether a user name appears more than once in the employee master list.
 	column '#Duplicate User' = ```
 			
 			IF(
