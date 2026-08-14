@@ -23,11 +23,12 @@
                       "Entity": "RLS Combine New"
                     }
                   },
-                  "Property": "Report Name"
+                  "Property": "#Report Name Revise"
                 }
               },
-              "queryRef": "RLS Combine New.Report Name",
-              "nativeQueryRef": "Report Name"
+              "queryRef": "RLS Combine New.#Report Name Revise",
+              "nativeQueryRef": "Report Name",
+              "displayName": "Report Name"
             },
             {
               "field": {
@@ -42,7 +43,7 @@
                       "Hierarchy": "#User Name Additional Hierarchy"
                     }
                   },
-                  "Level": "#User Name Additional"
+                  "Level": "User Name"
                 }
               },
               "queryRef": "RLS Combine New.#User Name Additional Hierarchy.#User Name Additional",
@@ -71,6 +72,20 @@
                       "Entity": "RLS Combine New"
                     }
                   },
+                  "Property": "Active"
+                }
+              },
+              "queryRef": "RLS Combine New.Active",
+              "nativeQueryRef": "Active"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "RLS Combine New"
+                    }
+                  },
                   "Property": "UPN"
                 }
               },
@@ -89,22 +104,8 @@
                 }
               },
               "queryRef": "CountNonNull(RLS Combine New.#GID)",
-              "nativeQueryRef": "GID",
-              "displayName": "GID"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "RLS Combine New"
-                    }
-                  },
-                  "Property": "Active"
-                }
-              },
-              "queryRef": "RLS Combine New.Active",
-              "nativeQueryRef": "Active"
+              "nativeQueryRef": "Global ID",
+              "displayName": "Global ID"
             }
           ]
         }
@@ -478,6 +479,22 @@
                 }
               }
             }
+          }
+        }
+      ],
+      "columnFormatting": [
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "RLS Combine New.#Report Name Revise"
           }
         }
       ]

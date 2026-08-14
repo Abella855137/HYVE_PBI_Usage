@@ -303,7 +303,7 @@
             "preset": {
               "expr": {
                 "Literal": {
-                  "Value": "'Custom'"
+                  "Value": "'Center'"
                 }
               }
             },
@@ -318,6 +318,13 @@
               "expr": {
                 "Literal": {
                   "Value": "5D"
+                }
+              }
+            },
+            "position": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Inner'"
                 }
               }
             }

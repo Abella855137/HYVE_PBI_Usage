@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
-  "name": "9898b5dec08d55ae7c20",
+  "name": "53847d564ba575a82f99",
   "position": {
-    "x": 204.51296426068677,
-    "y": 171.32445690259286,
-    "z": 2000,
-    "height": 528.3251576734408,
-    "width": 531.01611772950253,
-    "tabOrder": 2000
+    "x": 204.46617766911166,
+    "y": 442.31458842705786,
+    "z": 19000,
+    "height": 251.40994295028526,
+    "width": 531,
+    "tabOrder": 19000
   },
   "visual": {
     "visualType": "tableEx",
@@ -17,107 +17,77 @@
           "projections": [
             {
               "field": {
-                "Column": {
+                "HierarchyLevel": {
                   "Expression": {
-                    "SourceRef": {
-                      "Entity": "PBI Spy User Access"
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Usage Log"
+                        }
+                      },
+                      "Hierarchy": "#User Name Hierarchy"
                     }
                   },
-                  "Property": "#Report Name Revise"
+                  "Level": "User Name"
                 }
               },
-              "queryRef": "PBI Spy User Access.#Report Name Revise",
-              "nativeQueryRef": "Report Name",
-              "displayName": "Report Name"
+              "queryRef": "Usage Log.#User Name Hierarchy.#User Name",
+              "nativeQueryRef": "#User Name Hierarchy #User Name"
             },
             {
               "field": {
-                "Column": {
+                "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "PBI Spy User Access"
+                      "Entity": "Usage Log"
                     }
                   },
-                  "Property": "user_name"
+                  "Property": "~Duration"
                 }
               },
-              "queryRef": "PBI Spy User Access.user_name",
-              "nativeQueryRef": "User_name",
-              "displayName": "User_name"
+              "queryRef": "Usage Log.~Duration",
+              "nativeQueryRef": "Duration",
+              "displayName": "Duration"
             },
             {
               "field": {
-                "Column": {
+                "Aggregation": {
                   "Expression": {
-                    "SourceRef": {
-                      "Entity": "PBI Spy User Access"
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Usage Log"
+                        }
+                      },
+                      "Property": "#Recency"
                     }
                   },
-                  "Property": "~Has RLS"
+                  "Function": 3
                 }
               },
-              "queryRef": "PBI Spy User Access.~Has RLS",
-              "nativeQueryRef": "Has RLS",
-              "displayName": "Has RLS"
+              "queryRef": "Sum(Usage Log.#Recency)",
+              "nativeQueryRef": "Recency",
+              "displayName": "Recency"
             },
             {
               "field": {
-                "Column": {
+                "Aggregation": {
                   "Expression": {
-                    "SourceRef": {
-                      "Entity": "PBI Spy User Access"
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Usage Log"
+                        }
+                      },
+                      "Property": "#Operation within 30 days"
                     }
                   },
-                  "Property": "global_employee_id"
+                  "Function": 4
                 }
               },
-              "queryRef": "Sum(PBI Spy User Access.global_employee_id)",
-              "nativeQueryRef": "Global ID",
-              "displayName": "Global ID"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "PBI Spy User Access"
-                    }
-                  },
-                  "Property": "email_address"
-                }
-              },
-              "queryRef": "PBI Spy User Access.email_address",
-              "nativeQueryRef": "email_address"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "PBI Spy User Access"
-                    }
-                  },
-                  "Property": "company_name"
-                }
-              },
-              "queryRef": "PBI Spy User Access.company_name",
-              "nativeQueryRef": "Company Name",
-              "displayName": "Company Name"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "PBI Spy User Access"
-                    }
-                  },
-                  "Property": "rls_role"
-                }
-              },
-              "queryRef": "PBI Spy User Access.rls_role",
-              "nativeQueryRef": "RLS Role",
-              "displayName": "RLS Role"
+              "queryRef": "Sum(Usage Log.#Operation within 30 days)",
+              "nativeQueryRef": "30 days Operation",
+              "displayName": "30 days Operation"
             }
           ]
         }
@@ -126,13 +96,18 @@
         "sort": [
           {
             "field": {
-              "Column": {
+              "Aggregation": {
                 "Expression": {
-                  "SourceRef": {
-                    "Entity": "PBI Spy User Access"
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "Usage Log"
+                      }
+                    },
+                    "Property": "#Recency"
                   }
                 },
-                "Property": "~Has RLS"
+                "Function": 3
               }
             },
             "direction": "Ascending"
@@ -145,6 +120,13 @@
         {
           "properties": {
             "gridVertical": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "gridHorizontal": {
               "expr": {
                 "Literal": {
                   "Value": "true"
@@ -211,7 +193,14 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "9D"
+                  "Value": "8D"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }
@@ -244,70 +233,25 @@
                           "Comparison": {
                             "ComparisonKind": 0,
                             "Left": {
-                              "Aggregation": {
+                              "Measure": {
                                 "Expression": {
-                                  "Column": {
-                                    "Expression": {
-                                      "SourceRef": {
-                                        "Entity": "PBI Spy User Access"
-                                      }
-                                    },
-                                    "Property": "~Has RLS"
+                                  "SourceRef": {
+                                    "Entity": "Usage Log"
                                   }
                                 },
-                                "Function": 3
+                                "Property": "~CF"
                               }
                             },
                             "Right": {
                               "Literal": {
-                                "Value": "'Y'"
+                                "Value": "1D"
                               }
                             }
-                          },
-                          "Annotations": {
-                            "PowerBI.SQExprEvaluationKind": 1,
-                            "PowerBI.SQExprTextOperatorOption": 2
                           }
                         },
                         "Value": {
                           "Literal": {
                             "Value": "'TrafficHighLight'"
-                          }
-                        }
-                      },
-                      {
-                        "Condition": {
-                          "Comparison": {
-                            "ComparisonKind": 0,
-                            "Left": {
-                              "Aggregation": {
-                                "Expression": {
-                                  "Column": {
-                                    "Expression": {
-                                      "SourceRef": {
-                                        "Entity": "PBI Spy User Access"
-                                      }
-                                    },
-                                    "Property": "~Has RLS"
-                                  }
-                                },
-                                "Function": 3
-                              }
-                            },
-                            "Right": {
-                              "Literal": {
-                                "Value": "'N'"
-                              }
-                            }
-                          },
-                          "Annotations": {
-                            "PowerBI.SQExprEvaluationKind": 1,
-                            "PowerBI.SQExprTextOperatorOption": 2
-                          }
-                        },
-                        "Value": {
-                          "Literal": {
-                            "Value": "'TrafficLowLight'"
                           }
                         }
                       }
@@ -325,7 +269,7 @@
                 }
               }
             ],
-            "metadata": "PBI Spy User Access.~Has RLS"
+            "metadata": "Usage Log.~Duration"
           }
         }
       ],
@@ -345,17 +289,9 @@
           }
         },
         {
-          "properties": {
-            "value": {
-              "expr": {
-                "Literal": {
-                  "Value": "170.71921102285944D"
-                }
-              }
-            }
-          },
+          "properties": {},
           "selector": {
-            "metadata": "Usage Log.@User Name"
+            "metadata": "Usage Log.#User Name Hierarchy.#User Name"
           }
         },
         {
@@ -363,13 +299,13 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "145.4750827419761D"
+                  "Value": "98.72726849372482D"
                 }
               }
             }
           },
           "selector": {
-            "metadata": "PBI Spy User Access.user_name"
+            "metadata": "Usage Log.~Duration"
           }
         },
         {
@@ -377,14 +313,19 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "73.33213911554981D"
+                  "Value": "113.90910366242422D"
                 }
               }
             }
           },
           "selector": {
-            "metadata": "PBI Spy User Access.~Has RLS"
+            "metadata": "Sum(Usage Log.#Recency)"
           }
+        }
+      ],
+      "general": [
+        {
+          "properties": {}
         }
       ],
       "total": [
@@ -406,34 +347,6 @@
         {
           "properties": {
             "titleWrap": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "text": {
-              "expr": {
-                "Literal": {
-                  "Value": "'SPY Users'"
-                }
-              }
-            },
-            "fontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "10D"
-                }
-              }
-            },
-            "bold": {
               "expr": {
                 "Literal": {
                   "Value": "true"
@@ -496,6 +409,26 @@
               "expr": {
                 "Literal": {
                   "Value": "5D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualTooltip": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "section": {
+              "expr": {
+                "Literal": {
+                  "Value": "'14ebe4af6250145079b0'"
                 }
               }
             }

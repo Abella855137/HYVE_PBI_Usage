@@ -6,7 +6,7 @@
     "y": 118,
     "z": 0,
     "height": 185,
-    "width": 759,
+    "width": 760,
     "tabOrder": 0
   },
   "visual": {
@@ -28,7 +28,7 @@
                       "Hierarchy": "#User Name Additional Hierarchy"
                     }
                   },
-                  "Level": "#User Name Additional"
+                  "Level": "User Name"
                 }
               },
               "queryRef": "RLS Combine New.#User Name Additional Hierarchy.#User Name Additional",
@@ -50,8 +50,8 @@
                   "Level": "Report Name"
                 }
               },
-              "queryRef": "RLS Combine New.#User Name Additional Hierarchy.Report Name",
-              "nativeQueryRef": "#User Name Additional Hierarchy Report Name"
+              "queryRef": "RLS Combine New.#User Name Additional Hierarchy.#Report Name Revise",
+              "nativeQueryRef": "#User Name Additional Hierarchy #Report Name Revise"
             },
             {
               "field": {
@@ -103,6 +103,20 @@
                   }
                 }
               }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
             }
           }
         }
@@ -114,6 +128,19 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "9D"
                 }
               }
             }

@@ -21,7 +21,7 @@
                 "Hierarchy": "#User Name Additional Hierarchy"
               }
             },
-            "Level": "#User Name Additional"
+            "Level": "User Name"
           }
         },
         "type": "Categorical",
@@ -54,65 +54,10 @@
                     [
                       {
                         "Literal": {
-                          "Value": "'Raymond Yue'"
+                          "Value": "'Courtney Tran'"
                         }
                       }
                     ]
-                  ]
-                }
-              },
-              "Annotations": {
-                "filterExpressionMetadata": {
-                  "expressions": [
-                    {
-                      "HierarchyLevel": {
-                        "Expression": {
-                          "Hierarchy": {
-                            "Expression": {
-                              "SourceRef": {
-                                "Entity": "RLS Combine New"
-                              }
-                            },
-                            "Hierarchy": "#User Name Additional Hierarchy"
-                          }
-                        },
-                        "Level": "#User Name Additional"
-                      }
-                    }
-                  ],
-                  "decomposedIdentities": {
-                    "values": [
-                      [
-                        {
-                          "0": [
-                            {
-                              "Literal": {
-                                "Value": "'Raymond Yue'"
-                              }
-                            }
-                          ]
-                        }
-                      ]
-                    ],
-                    "columns": [
-                      {
-                        "value": {
-                          "Column": {
-                            "Expression": {
-                              "SourceRef": {
-                                "Entity": "RLS Combine New"
-                              }
-                            },
-                            "Property": "#User Name Additional"
-                          }
-                        }
-                      }
-                    ]
-                  },
-                  "valueMap": [
-                    {
-                      "0": "Raymond Yue"
-                    }
                   ]
                 }
               }
@@ -142,7 +87,7 @@
                 "Hierarchy": "#User Name Additional Hierarchy"
               }
             },
-            "Level": "#User Name Additional"
+            "Level": "User Name"
           }
         }
       }

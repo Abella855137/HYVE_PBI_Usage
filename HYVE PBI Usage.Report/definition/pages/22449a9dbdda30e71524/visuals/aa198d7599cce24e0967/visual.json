@@ -179,14 +179,14 @@
             "position": {
               "expr": {
                 "Literal": {
-                  "Value": "'Outer'"
+                  "Value": "'Inner'"
                 }
               }
             },
             "preset": {
               "expr": {
                 "Literal": {
-                  "Value": "'Custom'"
+                  "Value": "'Center'"
                 }
               }
             },

@@ -148,7 +148,7 @@
           "expanded": {
             "expr": {
               "Literal": {
-                "Value": "true"
+                "Value": "false"
               }
             }
           },
@@ -163,6 +163,9 @@
       }
     ]
   },
+  "publicCustomVisuals": [
+    "massFilter2E7137AC1174403C8CF3456F3EB0B7D7"
+  ],
   "resourcePackages": [
     {
       "name": "SharedResources",

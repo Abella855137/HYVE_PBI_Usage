@@ -310,7 +310,7 @@
             "position": {
               "expr": {
                 "Literal": {
-                  "Value": "'Outer'"
+                  "Value": "'Inner'"
                 }
               }
             },
@@ -324,35 +324,35 @@
             "angle": {
               "expr": {
                 "Literal": {
-                  "Value": "45D"
+                  "Value": "0L"
                 }
               }
             },
             "shadowDistance": {
               "expr": {
                 "Literal": {
-                  "Value": "5D"
+                  "Value": "0L"
                 }
               }
             },
             "shadowBlur": {
               "expr": {
                 "Literal": {
-                  "Value": "5D"
+                  "Value": "20L"
                 }
               }
             },
             "shadowSpread": {
               "expr": {
                 "Literal": {
-                  "Value": "3D"
+                  "Value": "0L"
                 }
               }
             },
             "transparency": {
               "expr": {
                 "Literal": {
-                  "Value": "70D"
+                  "Value": "70L"
                 }
               }
             }

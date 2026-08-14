@@ -213,7 +213,7 @@
             "filters": {
               "byExpr": [
                 {
-                  "name": "6643cbc89c5229425c36",
+                  "name": "559136282720d3377949",
                   "type": "Advanced",
                   "expression": {
                     "Column": {
@@ -228,7 +228,7 @@
                   "howCreated": 1
                 },
                 {
-                  "name": "255965f34d07bead7706",
+                  "name": "84052c8e81bdac8aa893",
                   "type": "Categorical",
                   "expression": {
                     "Column": {
@@ -243,7 +243,7 @@
                   "howCreated": 1
                 },
                 {
-                  "name": "36475700b5a9457097ad",
+                  "name": "e270d4d0ebad5932b14a",
                   "type": "Categorical",
                   "expression": {
                     "Column": {
@@ -258,7 +258,7 @@
                   "howCreated": 1
                 },
                 {
-                  "name": "0f80f7b3b0a6b3ba581d",
+                  "name": "199de10489ad6ebc52c2",
                   "type": "Advanced",
                   "expression": {
                     "Column": {
@@ -273,7 +273,7 @@
                   "howCreated": 1
                 },
                 {
-                  "name": "15b6251151bd09e9aa20",
+                  "name": "01465c88b0d2d45ee579",
                   "type": "Advanced",
                   "expression": {
                     "Column": {
@@ -288,7 +288,7 @@
                   "howCreated": 1
                 },
                 {
-                  "name": "0557915adce41d2e8390",
+                  "name": "829591f3c904db22005d",
                   "type": "Categorical",
                   "expression": {
                     "Column": {
@@ -303,7 +303,7 @@
                   "howCreated": 1
                 },
                 {
-                  "name": "7ab289bb712664e12e0b",
+                  "name": "965f3a61b7c1d73ec580",
                   "type": "Advanced",
                   "expression": {
                     "Measure": {
@@ -318,7 +318,7 @@
                   "howCreated": 0
                 },
                 {
-                  "name": "4f560c403813d01be0d0",
+                  "name": "3e105407a0613ca8c5a4",
                   "type": "Categorical",
                   "expression": {
                     "HierarchyLevel": {
@@ -338,7 +338,7 @@
                   "howCreated": 0
                 },
                 {
-                  "name": "dbea35e0e15669db9d70",
+                  "name": "e18ca784e5ed19959db5",
                   "type": "Categorical",
                   "expression": {
                     "HierarchyLevel": {
@@ -425,7 +425,7 @@
             "filters": {
               "byExpr": [
                 {
-                  "name": "7df1e93000161e9809a3",
+                  "name": "fb14f11720eadc1b3682",
                   "type": "Categorical",
                   "expression": {
                     "Column": {
@@ -495,7 +495,7 @@
             "filters": {
               "byExpr": [
                 {
-                  "name": "4422b8d4e744b8e7b2c1",
+                  "name": "3b52a73803936e83c562",
                   "type": "Categorical",
                   "expression": {
                     "Column": {
@@ -550,7 +550,7 @@
             "filters": {
               "byExpr": [
                 {
-                  "name": "98a896c73ee1a46bbcae",
+                  "name": "9b1bf5314e01d3bdd858",
                   "type": "Categorical",
                   "expression": {
                     "Column": {
@@ -611,7 +611,7 @@
             "filters": {
               "byExpr": [
                 {
-                  "name": "243dc980755695b00eb2",
+                  "name": "113351ce341380b71b0c",
                   "type": "Advanced",
                   "expression": {
                     "Aggregation": {
@@ -661,7 +661,7 @@
             "filters": {
               "byExpr": [
                 {
-                  "name": "35070c5d38d06a04ce09",
+                  "name": "f3342b30337094c107b0",
                   "type": "Advanced",
                   "expression": {
                     "Measure": {
@@ -676,7 +676,7 @@
                   "howCreated": 0
                 },
                 {
-                  "name": "797f3e6e8b0cb7c904ec",
+                  "name": "764f70c0d29d000a865c",
                   "type": "Advanced",
                   "expression": {
                     "Measure": {
@@ -691,7 +691,7 @@
                   "howCreated": 0
                 },
                 {
-                  "name": "d1acee7a05807e7907d8",
+                  "name": "4f37b4e188eee42ab697",
                   "type": "Advanced",
                   "expression": {
                     "Measure": {
@@ -706,7 +706,7 @@
                   "howCreated": 0
                 },
                 {
-                  "name": "663aad1a2080246827d3",
+                  "name": "077479b006baae772150",
                   "type": "Advanced",
                   "expression": {
                     "Measure": {
@@ -721,7 +721,7 @@
                   "howCreated": 0
                 },
                 {
-                  "name": "e88c70e5e72dd22d3e49",
+                  "name": "8648aeae48140a750a6b",
                   "type": "Advanced",
                   "expression": {
                     "Measure": {
@@ -736,7 +736,7 @@
                   "howCreated": 0
                 },
                 {
-                  "name": "18f89ab842926da32092",
+                  "name": "be38b5e3d35a63e7cc70",
                   "type": "Advanced",
                   "expression": {
                     "Measure": {
@@ -751,22 +751,7 @@
                   "howCreated": 0
                 },
                 {
-                  "name": "a9fb6079095235541577",
-                  "type": "Categorical",
-                  "expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Usage Log"
-                        }
-                      },
-                      "Property": "create_datetime"
-                    }
-                  },
-                  "howCreated": 0
-                },
-                {
-                  "name": "544f8c7c89636c826ac7",
+                  "name": "14af8159c6e3ed146316",
                   "type": "Categorical",
                   "expression": {
                     "HierarchyLevel": {
@@ -780,52 +765,22 @@
                           "Hierarchy": "#User Name Hierarchy"
                         }
                       },
-                      "Level": "#User Name"
+                      "Level": "User Name"
                     }
                   },
                   "howCreated": 0
                 },
                 {
-                  "name": "120e10a5b08a656cb41d",
-                  "type": "Advanced",
+                  "name": "25ab0672ea180341a757",
+                  "type": "Categorical",
                   "expression": {
-                    "Measure": {
+                    "Column": {
                       "Expression": {
                         "SourceRef": {
                           "Entity": "Usage Log"
                         }
                       },
-                      "Property": "~Operation in 3 Month"
-                    }
-                  },
-                  "howCreated": 0
-                },
-                {
-                  "name": "df870fa3b99907110a35",
-                  "type": "Advanced",
-                  "expression": {
-                    "Measure": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Usage Log"
-                        }
-                      },
-                      "Property": "~First-Last Operation Month"
-                    }
-                  },
-                  "howCreated": 0
-                },
-                {
-                  "name": "3a55d678809ccea03b54",
-                  "type": "Advanced",
-                  "expression": {
-                    "Measure": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Usage Log"
-                        }
-                      },
-                      "Property": "~Latest Active"
+                      "Property": "create_datetime"
                     }
                   },
                   "howCreated": 0
@@ -864,7 +819,7 @@
                           "Hierarchy": "#User Name Hierarchy"
                         }
                       },
-                      "Level": "#User Name"
+                      "Level": "User Name"
                     }
                   }
                 ]
@@ -899,18 +854,6 @@
                         "Usage Log.create_datetime"
                       ],
                       "isCollapsed": true,
-                      "identityKeys": [
-                        {
-                          "Column": {
-                            "Expression": {
-                              "SourceRef": {
-                                "Entity": "Usage Log"
-                              }
-                            },
-                            "Property": "create_datetime"
-                          }
-                        }
-                      ],
                       "isPinned": true
                     }
                   ],
@@ -931,7 +874,7 @@
             "filters": {
               "byExpr": [
                 {
-                  "name": "9800f789795334e54577",
+                  "name": "8fadd11a304bcb79d429",
                   "type": "Advanced",
                   "expression": {
                     "Measure": {
@@ -971,7 +914,7 @@
             "filters": {
               "byExpr": [
                 {
-                  "name": "2533d1eb85904687036c",
+                  "name": "cf1721007d8726996295",
                   "type": "Advanced",
                   "expression": {
                     "Aggregation": {
@@ -1021,7 +964,7 @@
             "filters": {
               "byExpr": [
                 {
-                  "name": "994b2722be41a882a7d0",
+                  "name": "661f0e6a9905238be605",
                   "type": "Advanced",
                   "expression": {
                     "Measure": {
@@ -1061,7 +1004,7 @@
             "filters": {
               "byExpr": [
                 {
-                  "name": "69ff0fe089775b327467",
+                  "name": "f737f0d621ded7ae6417",
                   "type": "Advanced",
                   "expression": {
                     "Aggregation": {
@@ -1117,7 +1060,7 @@
             "filters": {
               "byExpr": [
                 {
-                  "name": "a73a8069e4e476c3de1d",
+                  "name": "f100131a5a20816de8aa",
                   "type": "Advanced",
                   "expression": {
                     "Measure": {
@@ -1132,7 +1075,7 @@
                   "howCreated": 0
                 },
                 {
-                  "name": "9c59f5559a5c5054c1ee",
+                  "name": "ae531be104ade6c005bc",
                   "type": "Categorical",
                   "expression": {
                     "HierarchyLevel": {
@@ -1152,7 +1095,7 @@
                   "howCreated": 0
                 },
                 {
-                  "name": "29e7d4471ad2584db5e0",
+                  "name": "e8e39a8a3a1070eca29b",
                   "type": "Categorical",
                   "expression": {
                     "HierarchyLevel": {
@@ -1216,7 +1159,7 @@
             "filters": {
               "byExpr": [
                 {
-                  "name": "f1b3218c7e2b13b08067",
+                  "name": "2e0c320a4bc5a0b5151e",
                   "type": "Advanced",
                   "expression": {
                     "Measure": {
@@ -1256,6 +1199,276 @@
             "singleVisual": {
               "visualType": "textbox",
               "objects": {}
+            }
+          },
+          "ec0f398f0ceb85ab08eb": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "71d6bd226c61c1e65a43",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Usage Log"
+                        }
+                      },
+                      "Property": "#Duration Group"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Usage Log"
+                        }
+                      },
+                      "Property": "#Duration Group"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "302257461870132b092f": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "b8697b6a22ac68dee011",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Usage Log"
+                        }
+                      },
+                      "Property": "#Recency Group"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Usage Log"
+                        }
+                      },
+                      "Property": "#Recency Group"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "f1db7697de7ec36f09e2": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "dc50bfd79b638be27753",
+                  "type": "Advanced",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Usage Log"
+                        }
+                      },
+                      "Property": "#Operation within 30 days"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Between'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Usage Log"
+                        }
+                      },
+                      "Property": "#Operation within 30 days"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "53847d564ba575a82f99": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "1a82d74ace3a4160082a",
+                  "type": "Categorical",
+                  "expression": {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Usage Log"
+                            }
+                          },
+                          "Hierarchy": "#User Name Hierarchy"
+                        }
+                      },
+                      "Level": "User Name"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "dba6cedd7a4ed7d15bc0",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Usage Log"
+                        }
+                      },
+                      "Property": "~Duration"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "848fb26c734c3bee0143",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Usage Log"
+                            }
+                          },
+                          "Property": "#Recency"
+                        }
+                      },
+                      "Function": 3
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "0422c57ddba0a6687ee0",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Usage Log"
+                            }
+                          },
+                          "Property": "#Operation within 30 days"
+                        }
+                      },
+                      "Function": 4
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "tableEx",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 1,
+                  "Expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Usage Log"
+                            }
+                          },
+                          "Property": "#Recency"
+                        }
+                      },
+                      "Function": 3
+                    }
+                  }
+                }
+              ]
             }
           }
         }

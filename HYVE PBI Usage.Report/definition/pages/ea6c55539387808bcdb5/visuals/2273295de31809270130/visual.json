@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
   "name": "2273295de31809270130",
   "position": {
-    "x": 205.40861812778604,
-    "y": 442.1991084695394,
+    "x": 742,
+    "y": 442.31458842705786,
     "z": 7000,
-    "height": 252.00594353640417,
-    "width": 1067.9346210995543,
+    "height": 251.40994295028526,
+    "width": 531,
     "tabOrder": 6000
   },
   "visual": {
@@ -28,7 +28,7 @@
                       "Hierarchy": "#User Name Hierarchy"
                     }
                   },
-                  "Level": "#User Name"
+                  "Level": "User Name"
                 }
               },
               "queryRef": "Usage Log.#User Name Hierarchy.#User Name",
@@ -54,51 +54,6 @@
         },
         "Values": {
           "projections": [
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Usage Log"
-                    }
-                  },
-                  "Property": "~First-Last Operation Month"
-                }
-              },
-              "queryRef": "Usage Log.~First-Last Operation Month",
-              "nativeQueryRef": "First-Last Operation Month",
-              "displayName": "First-Last Operation Month"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Usage Log"
-                    }
-                  },
-                  "Property": "~Latest Active"
-                }
-              },
-              "queryRef": "Usage Log.~Latest Active",
-              "nativeQueryRef": "Latest Active",
-              "displayName": "Latest Active"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Usage Log"
-                    }
-                  },
-                  "Property": "~Operation in 3 Month"
-                }
-              },
-              "queryRef": "Usage Log.~Operation in 3 Month",
-              "nativeQueryRef": "Operation in 3 Month",
-              "displayName": "Operation in 3 Month"
-            },
             {
               "field": {
                 "Measure": {
@@ -240,18 +195,6 @@
               "Usage Log.create_datetime"
             ],
             "isCollapsed": true,
-            "identityKeys": [
-              {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Usage Log"
-                    }
-                  },
-                  "Property": "create_datetime"
-                }
-              }
-            ],
             "isPinned": true
           }
         ],
@@ -355,72 +298,6 @@
               }
             }
           }
-        },
-        {
-          "properties": {
-            "icon": {
-              "kind": "Icon",
-              "layout": {
-                "expr": {
-                  "Literal": {
-                    "Value": "'Before'"
-                  }
-                }
-              },
-              "verticalAlignment": {
-                "expr": {
-                  "Literal": {
-                    "Value": "'Top'"
-                  }
-                }
-              },
-              "value": {
-                "expr": {
-                  "Conditional": {
-                    "Cases": [
-                      {
-                        "Condition": {
-                          "Comparison": {
-                            "ComparisonKind": 0,
-                            "Left": {
-                              "Measure": {
-                                "Expression": {
-                                  "SourceRef": {
-                                    "Entity": "Usage Log"
-                                  }
-                                },
-                                "Property": "~CF"
-                              }
-                            },
-                            "Right": {
-                              "Literal": {
-                                "Value": "1D"
-                              }
-                            }
-                          }
-                        },
-                        "Value": {
-                          "Literal": {
-                            "Value": "'TrafficHighLight'"
-                          }
-                        }
-                      }
-                    ]
-                  }
-                }
-              }
-            }
-          },
-          "selector": {
-            "data": [
-              {
-                "dataViewWildcard": {
-                  "matchingOption": 1
-                }
-              }
-            ],
-            "metadata": "Usage Log.~First-Last Operation Month"
-          }
         }
       ],
       "columnWidth": [
@@ -519,20 +396,6 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "149.40886699507388D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Usage Log.~Latest Active"
-          }
-        },
-        {
-          "properties": {
-            "value": {
-              "expr": {
-                "Literal": {
                   "Value": "67.80792686698251D"
                 }
               }
@@ -586,72 +449,6 @@
                 }
               }
             }
-          }
-        }
-      ],
-      "columnFormatting": [
-        {
-          "properties": {
-            "styleSubtotals": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "backColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 3,
-                      "Percent": 0.6
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Usage Log.~First-Last Operation Month"
-          }
-        },
-        {
-          "properties": {
-            "backColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 3,
-                      "Percent": 0.6
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Usage Log.~Latest Active"
-          }
-        },
-        {
-          "properties": {
-            "backColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 3,
-                      "Percent": 0.6
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Usage Log.~Operation in 3 Month"
           }
         }
       ],

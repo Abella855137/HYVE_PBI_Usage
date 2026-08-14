@@ -55,3 +55,7 @@ relationship 5a4ea705-ce86-17d5-bd11-a9bcd7a61142
 	fromColumn: 'RLS Combine New'.#Key1
 	toColumn: Access.#Key1
 
+relationship f117e49d-8b5e-2f31-a64c-dbbd0dc4726f
+	fromColumn: Access.'Report Name'
+	toColumn: Key.'#Report Name Revise'
+
